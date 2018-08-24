@@ -1,6 +1,5 @@
 import pygame, sys
 from pygame.locals import *
-from Clases import rey
 pygame.init()
 
 ventana = pygame.display.set_mode((700,700))
@@ -13,19 +12,13 @@ ball = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
 posbX = 5
 posbY= 5
 ventana.blit(ball, (posbX, posbY))
-pepe = rey()
-all_sprites = pygame.sprite.Group()
-all_sprites.add(pepe)
-print(pepe.rect.y)
-pepe.rect.y = pepe.rect.y+1
+
 while True:
-    all_sprites.draw(ventana)
 
 
 
     for evento in pygame.event.get():
         print(evento)
-
         if evento.type == QUIT:
             pygame.quit()
             sys.exit()
