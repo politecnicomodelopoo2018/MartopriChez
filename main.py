@@ -2,15 +2,17 @@ import pygame, sys
 from pygame.locals import *
 pygame.init()
 
+green = (0, 200, 200)
 ventana = pygame.display.set_mode((700,700))
 pygame.display.set_caption("Martorille chess")
 
-Board = pygame.image.load("/home/melman/Escritorio/board.png")
+Board = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
 posX, posY = 0, 0
 ventana.blit(Board,(posX,posY))
 ball = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
-posbX = 5
-posbY= 5
+
+posbX = 150
+posbY= 150
 ventana.blit(ball, (posbX, posbY))
 
 while True:
@@ -18,7 +20,9 @@ while True:
 
 
     for evento in pygame.event.get():
-        print(evento)
+
+
+
         if evento.type == QUIT:
             pygame.quit()
             sys.exit()
