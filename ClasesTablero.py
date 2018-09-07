@@ -11,6 +11,13 @@ class Tablero(object):
         self.lista_Piezas = []
         self.lista_Bloques = []
 
+    intance = None
+
+    def __new__(cls):
+        if not Tablero.instance:
+            Tablero.instance = Tablero.Tablero()
+        return Tablero.instance
+
     #resive los todos los posibles movimientos y los imprime con la pelota verde
     def posibles_mov(self,pieza):
 
@@ -21,12 +28,12 @@ class Tablero(object):
             ventana.blit(a,(item[0], item[1]))
 
     #despues de un mov llamar a esta funcion para imprimir una pieza
-    def imprimir(self,a):
+    def imprimir(self):
 
-        for item in self.lista_Bloques:
-            if item.traducciony == a.posy and item.traduccionx == a.posx:
-                ventana.blit(a.imagen, (item.posx, item.posy))
-
+        ventana.blit(self.imagen(0,0))
+        for item in self.lista_Piezas:
+            if item.viva:
+                ventana.blit(item.imagen(item.posx,item.posy))
 
 class Bloque(object):
 
