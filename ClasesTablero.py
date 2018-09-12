@@ -6,22 +6,22 @@ ventana = pygame.display.set_mode((700,700))
 
 class Tablero(object):
 
+    instance = None
+
     def __init__(self):
         self.imagen = "/home/melman/Escritorio/Tablero.jpg"
         self.lista_Piezas = []
         self.lista_Bloques = []
 
-    intance = None
-
-    def __new__(cls):
-        if not Tablero.instance:
-            Tablero.instance = Tablero.Tablero()
+    def __new__(cls, *args, **kwargs):
+        if Tablero.instance is None:
+            Tablero.instance = object.__new__(cls)
         return Tablero.instance
 
     #resive los todos los posibles movimientos y los imprime con la pelota verde
-    def posibles_mov(self,pieza):
-
-        lista_a_imprimir=pieza.posibles_movimientos()
+    def posibles_mov(self,pieza):#imrpime los posibles mov de laqs piezas en la clase tablero
+        print(self.lista_Piezas)
+        lista_a_imprimir = pieza.posibles_movimientos()
 
         for item in lista_a_imprimir:
 
@@ -34,6 +34,9 @@ class Tablero(object):
         for item in self.lista_Piezas:
             if item.viva:
                 ventana.blit(item.imagen(item.posx,item.posy))
+
+
+
 
 class Bloque(object):
 
