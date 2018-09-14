@@ -10,19 +10,19 @@ class Tablero(object):
 
     def __init__(self):
         self.imagen = "/home/melman/Escritorio/Tablero.jpg"
-        self.lista_Piezas = []
-        self.lista_Bloques = []
+
 
     def __new__(cls, *args, **kwargs):
         if Tablero.instance is None:
             Tablero.instance = object.__new__(cls)
+            Tablero.instance.lista_Piezas = []
+            Tablero.instance.lista_Bloques = []
         return Tablero.instance
 
     #resive los todos los posibles movimientos y los imprime con la pelota verde
     def posibles_mov(self,pieza):#imrpime los posibles mov de laqs piezas en la clase tablero
-        print(self.lista_Piezas)
         lista_a_imprimir = pieza.posibles_movimientos()
-
+        print(lista_a_imprimir)
         for item in lista_a_imprimir:
 
             ventana.blit(a,(item[0], item[1]))
