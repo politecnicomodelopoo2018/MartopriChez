@@ -703,13 +703,13 @@ class peon(pieza):
     def posibles_movimientos(self):
         lista_de_mov_posibles = []
         lista_total_de_lugares = []
-
-        for item in Tablero.lista_Piezas:  # ataque al rey por rayosx
+        lista_totalx = []
+        for item in Tablero().lista_Piezas:  # ataque al rey por rayosx
             if item.__class__.__name__ == "rey" and self.color == item.color:
                 reyx = item.posx
                 reyy = item.posy
             if not (item.imagen == self.imagen and item.color == self.color):
-                lista_totalx = + item.rayosX()
+                lista_totalx += item.rayosX()
 
         for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
             if self.posy != item.posy and self.posx != item.posx :

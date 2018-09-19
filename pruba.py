@@ -70,7 +70,8 @@ while True:
     for item in Tablero().lista_Piezas:
         for item2 in Tablero().lista_Bloques:
             if item2.poscx == item.posx and item2.poscy == item.posy:
-                ventana.blit(item.imagen, (item2.traduccionx + 30, item2.traducciony + 10))
+                ventana.blit(item.imagen, (item2.traduccionx + 20, item2.traducciony + 5))
+                item2.esta_Vacio()
 
     for evento in pygame.event.get():
         mouse = pygame.mouse.get_pos()
@@ -81,8 +82,10 @@ while True:
             if Tablero().lista_Bloques[item].traduccionx + 82 > mouse[0]> Tablero().lista_Bloques[item].traduccionx and\
                     Tablero().lista_Bloques[item].traducciony + 82 > mouse[1]> Tablero().lista_Bloques[item].traducciony \
                     and evento.type == pygame.MOUSEBUTTONDOWN and Tablero().lista_Bloques[item].Vacio == False:
+                for item2 in Tablero().lista_Piezas:
+                    if item2.posx == Tablero().lista_Bloques[item].poscx and item2.posy == Tablero().lista_Bloques[item].poscy:
+                        item2.posibles_movimientos()#faltan los rayos x del peon
 
-               print(Tablero().lista_Bloques[item].Nombre)
 
         if evento.type == QUIT:
             pygame.quit()
