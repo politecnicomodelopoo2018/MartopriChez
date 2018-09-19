@@ -7,6 +7,30 @@ from ClasesTablero import *
 
 pygame.init()
 
+x=0
+y=2
+for item in range(8):
+    a=peon()
+    x += 1
+    a.color = "Blanco"
+    a.posx = x
+    a.posy = y
+    a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/peon_Blanco.png")
+    a.viva = True
+    a.var_inicial = True
+    Tablero().lista_Piezas.append(a)
+y=7
+x=0
+for item in range(8):
+    a=peon()
+    x += 1
+    a.color = "Negro"
+    a.posx = x
+    a.posy = y
+    a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/peon_Negro.png")
+    a.viva = True
+    a.var_inicial = True
+    Tablero().lista_Piezas.append(a)
 ventana = pygame.display.set_mode((700,700))
 red = (255, 0, 0)
 blue = (0, 255, 0)
@@ -43,12 +67,13 @@ Tablero().crear_Bloques()
 
 pepin = 0
 while True:
-
+    for item in Tablero().lista_Piezas:
+        for item2 in Tablero().lista_Bloques:
+            if item2.poscx == item.posx and item2.poscy == item.posy:
+                ventana.blit(item.imagen, (item2.traduccionx + 30, item2.traducciony + 10))
 
     for evento in pygame.event.get():
         mouse = pygame.mouse.get_pos()
-
-        ventana.blit(reina.imagen, (reina.posx, reina.posy))
 
 
 
@@ -58,7 +83,6 @@ while True:
                     and evento.type == pygame.MOUSEBUTTONDOWN and Tablero().lista_Bloques[item].Vacio == False:
 
                print(Tablero().lista_Bloques[item].Nombre)
-
 
         if evento.type == QUIT:
             pygame.quit()

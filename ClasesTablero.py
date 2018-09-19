@@ -81,3 +81,11 @@ class Bloque(object):
     poscx = None
     poscy = None
     Vacio = None
+
+    def esta_Vacio(self):
+
+        for item in Tablero().lista_Piezas:
+            if item.posx == self.poscx and item.posy == self.poscy:
+                self.Vacio = False
+                return
+        self.Vacio = True
