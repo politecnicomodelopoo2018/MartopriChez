@@ -36,6 +36,41 @@ class Tablero(object):
                 ventana.blit(item.imagen(item.posx,item.posy))
 
 
+    def crear_Bloques(self):
+
+        traducy = 595
+        # 82 y
+        # 81 x
+        y = 1
+        xprima=0
+        for item in range(8):
+            x = 0
+            xprima +=1
+            print("entre2")
+            traducx = 24
+            for item in range(8):
+                x += 1
+
+                print("entre")
+
+
+                a = Bloque()
+                pepe = chr(64 + x)
+                pepe = str(pepe)
+                pepen = str(xprima)
+                una_var = (pepe + pepen)
+                a.Nombre = una_var
+                a.poscx = x
+                a.poscy = y
+                a.vacio = True
+                a.traduccionx = traducx
+                a.traducciony = traducy
+                Tablero().lista_Bloques.append(a)
+                traducx += 81
+                print(a)
+
+            y += 1
+            traducy -= 82
 
 
 class Bloque(object):
