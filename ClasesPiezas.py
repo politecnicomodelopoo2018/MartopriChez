@@ -11,8 +11,7 @@ class pieza(object):
     viva = None
     var_inicial = True
 
-    def rayosx(self):
-
+    def rayosX(self):
         vacia = []
         return vacia
 
@@ -26,17 +25,11 @@ class pieza(object):
 
         return False
 
-    def rayosx(self):
-
-        vacia = []
-        return vacia
-
     def inicial(self):
 
          self.var_inicial = False
 
 class rey(pieza):
-
 
     def posibles_movimientos(self):
 
@@ -44,7 +37,7 @@ class rey(pieza):
         lista_total = []
 
         for item in Tablero().lista_Piezas:
-            if not (item.imagen == self.imagen and item.color == self.color):
+            if item.posx == self.posx and not item.posy == self.posy:
                 lista_total += item.posibles_movimientos()
 
         for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
@@ -163,9 +156,11 @@ class rey(pieza):
         return lista
 
 
-class Caballo(pieza):
+class caballo(pieza):
 
     def posibles_movimientos(self):
+
+        lista_totalx = []
 
         lista_total_de_lugares=[]
         for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
@@ -175,12 +170,13 @@ class Caballo(pieza):
                 lista_aux.append(item.posy)
                 lista_total_de_lugares.append(lista_aux)
 
-        for item in Tablero.lista_Piezas:#ataque al rey por rayosx
+        for item in Tablero().lista_Piezas:#ataque al rey por rayosx
             if item.__class__.__name__ == "rey" and self.color == item.color:
                 reyx = item.posx
                 reyy = item.posy
             if not (item.imagen == self.imagen and item.color == self.color):
-                lista_totalx =+ item.rayosX()
+                print(item)
+                lista_totalx += item.rayosX()
 
         if [reyx , reyy] not in lista_totalx:
 
@@ -334,6 +330,8 @@ class torre(pieza):
 
         lista_total_de_lugares = []
 
+        lista_totalx = []
+
         for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
             if self.posy != item.posy and self.posx != item.posx and self.color == item.color:
                 lista_aux = []
@@ -341,12 +339,12 @@ class torre(pieza):
                 lista_aux.append(item.posy)
                 lista_total_de_lugares.append(lista_aux)
 
-        for item in Tablero.lista_Piezas:#ataque al rey por rayosx
+        for item in Tablero().lista_Piezas:#ataque al rey por rayosx
             if item.__class__.__name__ == "rey" and self.color == item.color:
                 reyx = item.posx
                 reyy = item.posy
             if not (item.imagen == self.imagen and item.color == self.color):
-                lista_totalx =+ item.rayosX()
+                lista_totalx += item.rayosX()
 
         if [reyx , reyy] not in lista_totalx:
             i = 0
@@ -407,7 +405,7 @@ class alfil(pieza):
 
         for item in range(8):
 
-            i=+1
+            i+=1
 
             list_aux = []
 
@@ -445,10 +443,13 @@ class alfil(pieza):
         return lista_de_rayosx
 
     def posibles_movimientos(self):
-
+        reyx = 0
+        reyy = 0
         lista_de_mov_posibles = []
 
         lista_total_de_lugares = []
+
+        lista_totalx = []
 
         for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
             if self.posy != item.posy and self.posx != item.posx and self.color == item.color:
@@ -457,12 +458,13 @@ class alfil(pieza):
                 lista_aux.append(item.posy)
                 lista_total_de_lugares.append(lista_aux)
 
-        for item in Tablero.lista_Piezas:#ataque al rey por rayosx
+        for item in Tablero().lista_Piezas:#ataque al rey por rayosx
             if item.__class__.__name__ == "rey" and self.color == item.color:
                 reyx = item.posx
                 reyy = item.posy
             if not (item.imagen == self.imagen and item.color == self.color):
-                lista_totalx =+ item.rayosX()
+                print(item)
+                lista_totalx += item.rayosX()
 
         if [reyx , reyy] not in lista_totalx:
             i = 0
@@ -523,7 +525,7 @@ class reina(pieza):
 
         for item in range(8):
 
-            i = +1
+            i += 1
 
             list_aux = []
 
@@ -612,9 +614,10 @@ class reina(pieza):
                 reyx = item.posx
                 reyy = item.posy
             if not (item.imagen == self.imagen and item.color == self.color):
-                lista_totalx += item.rayosx()
+                print (item)
+                lista_totalx += item.rayosX()
 
-        if [reyx , reyy] not in lista_totalx:
+        if [reyx, reyy] not in lista_totalx:
             i = 0
             for item in range(8):
 
@@ -712,7 +715,7 @@ class peon(pieza):
                 lista_totalx += item.rayosX()
 
         for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
-            if self.posy != item.posy and self.posx != item.posx :
+            if self.posy != item.posy and self.posx != item.posx:
                 lista_aux = []
                 lista_aux.append(item.posx)
                 lista_aux.append(item.posy)
@@ -740,3 +743,4 @@ class peon(pieza):
                         list_aux.append(VariableParaImprimirx)
                         list_aux.append(VariableParaImprimiry)
                         lista_de_mov_posibles.append(list_aux)
+    #falta rayos x

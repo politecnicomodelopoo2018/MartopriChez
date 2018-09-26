@@ -22,10 +22,15 @@ class Tablero(object):
     #resive los todos los posibles movimientos y los imprime con la pelota verde
     def posibles_mov(self,pieza):#imrpime los posibles mov de laqs piezas en la clase tablero
         lista_a_imprimir = pieza.posibles_movimientos()
-        print(lista_a_imprimir)
-        for item in lista_a_imprimir:
+        list_aux = []
+        for mov in lista_a_imprimir:
+            for item in self.lista_Bloques:
+                if item.poscy == mov[1] and item.poscx == mov[0]:
+                    list_aux.append(item)
+        for item in list_aux:
 
-            ventana.blit(a,(item[0], item[1]))
+            ventana.blit(a,(item.traduccionx, item.traducciony))
+
 
     #despues de un mov llamar a esta funcion para imprimir una pieza
     def imprimir(self):

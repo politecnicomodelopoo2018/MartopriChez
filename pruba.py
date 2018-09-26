@@ -7,30 +7,35 @@ from ClasesTablero import *
 
 pygame.init()
 
-x=0
-y=2
-for item in range(8):
-    a=peon()
-    x += 1
-    a.color = "Blanco"
-    a.posx = x
-    a.posy = y
-    a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/peon_Blanco.png")
-    a.viva = True
-    a.var_inicial = True
-    Tablero().lista_Piezas.append(a)
-y=7
-x=0
-for item in range(8):
-    a=peon()
-    x += 1
-    a.color = "Negro"
-    a.posx = x
-    a.posy = y
-    a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/peon_Negro.png")
-    a.viva = True
-    a.var_inicial = True
-    Tablero().lista_Piezas.append(a)
+
+y = 1
+x = 4
+
+
+a = rey()
+a.color = "Blanco"
+a.posx = x
+a.posy = y
+a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/rey_Blanco.png")
+a.viva = True
+a.var_inicial = True
+Tablero().lista_Piezas.append(a)
+y = 8
+x = 5
+
+a = rey()
+a.color = "Negro"
+a.posx = x
+a.posy = y
+a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/rey_Negro.png")
+a.viva = True
+a.var_inicial = True
+Tablero().lista_Piezas.append(a)
+
+
+
+
+
 ventana = pygame.display.set_mode((700,700))
 red = (255, 0, 0)
 blue = (0, 255, 0)
@@ -39,28 +44,7 @@ Board = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
 posX, posY = 0, 0
 pygame.display.set_caption("Martorille chess")
 ball = pygame.image.load("/home/melman/Escritorio/rsz_153617249791251.png")
-ventana.blit(Board,(posX,posY))
-posbX = 230
-posbY= 450
-ventana.blit(ball, (posbX, posbY))
-
-rey = rey()
-rey.color = "Blanco"
-rey.posy = 500
-rey.posx = 500
-rey.viva = True
-
-reina = reina()
-reina.color = "Blanco"
-reina.posy = 120
-reina.posx = 120
-reina.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Blanco.png")
-reina.viva = True
-ventana.blit(reina.imagen,(reina.posx, reina.posy))
-Tablero().lista_Piezas.append(reina)
-rey.imagen = pygame.image.load("/home/melman/Escritorio/piezas/rey_Blanco.png")
 ventana.blit(Board, (posX, posY))
-ventana.blit(rey.imagen,(rey.posx, rey.posy))
 Tablero().lista_Piezas.append(rey)
 
 Tablero().crear_Bloques()
@@ -84,12 +68,22 @@ while True:
                     and evento.type == pygame.MOUSEBUTTONDOWN and Tablero().lista_Bloques[item].Vacio == False:
                 for item2 in Tablero().lista_Piezas:
                     if item2.posx == Tablero().lista_Bloques[item].poscx and item2.posy == Tablero().lista_Bloques[item].poscy:
-                        item2.posibles_movimientos()#faltan los rayos x del peon
+                        Tablero().posibles_mov(item2)#faltan los rayos x del peon
+                        list_aux = item2.posibles_movimientos()
+                        pygame.display.update()
+                        while True:
+                            for item3 in list_aux:
+                                for item_bloques in Tablero().lista_Bloques:
+                                    print ("tu vieja")
+                                    if item_bloques.poscx == item3[0] and item_bloques.poscy == item3[1] and evento.type == pygame.MOUSEBUTTONDOWN and mouse[0] == item_bloques.traduccionx and mouse[1] == item_bloques.traducciony:
+                                        item2.mover(item3[0],item3[1])
+                                        ventana.blit(item2.imagen, (item_bloques.traduccionx, item_bloques.traducciony))
+                                        break
 
 
-        if evento.type == QUIT:
-            pygame.quit()
-            sys.exit()
+            if evento.type == QUIT:
+                pygame.quit()
+                sys.exit()
 
 
         pygame.display.update()
