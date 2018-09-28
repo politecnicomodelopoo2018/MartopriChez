@@ -9,7 +9,7 @@ class Tablero(object):
     instance = None
 
     def __init__(self):
-        self.imagen = "/home/melman/Escritorio/Tablero.jpg"
+        self.imagen = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
 
 
     def __new__(cls, *args, **kwargs):
@@ -35,10 +35,11 @@ class Tablero(object):
     #despues de un mov llamar a esta funcion para imprimir una pieza
     def imprimir(self):
 
-        ventana.blit(self.imagen(0,0))
+        ventana.blit(self.imagen, (0,0))
         for item in self.lista_Piezas:
-            if item.viva:
-                ventana.blit(item.imagen(item.posx,item.posy))
+            for item_bloques in self.lista_Bloques:
+                if item.viva and item.posx == item_bloques.poscx and item.posy == item_bloques.poscy:
+                    ventana.blit(item.imagen,(item_bloques.traduccionx + 20,item_bloques.traducciony + 5))
 
 
     def crear_Bloques(self):
@@ -76,6 +77,23 @@ class Tablero(object):
 
             y += 1
             traducy -= 82
+
+    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza,evento,mouse):#mover las piezas
+        x,y=0,0
+        while True:
+            for item3 in list_aux:
+                for item_bloques in Tablero().lista_Bloques:
+                    if evento.type == pygame.MOUSEBUTTONDOWN and \
+                            item_bloques.traduccionx + 82 > mouse[0] > item_bloques.traduccionx and \
+                            item_bloques.traducciony + 82 > mouse[1] > item_bloques.traducciony:
+
+                        x = item3[0]
+                        y = item3[1]
+                        print(x)
+                        print(y)
+                    if x !=0 and y != 0:
+                        pieza.mover(x, y)
+                        return
 
 
 class Bloque(object):

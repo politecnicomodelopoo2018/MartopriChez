@@ -62,28 +62,24 @@ while True:
 
 
 
-        for item in range(64):
-            if Tablero().lista_Bloques[item].traduccionx + 82 > mouse[0]> Tablero().lista_Bloques[item].traduccionx and\
-                    Tablero().lista_Bloques[item].traducciony + 82 > mouse[1]> Tablero().lista_Bloques[item].traducciony \
-                    and evento.type == pygame.MOUSEBUTTONDOWN and Tablero().lista_Bloques[item].Vacio == False:
+        for item in Tablero().lista_Bloques:
+
+            if item.traduccionx + 82 > mouse[0]> item.traduccionx and\
+                    item.traducciony + 82 > mouse[1]> item.traducciony \
+                    and evento.type == pygame.MOUSEBUTTONDOWN and item.Vacio is False:
+
+                print(item.Nombre)
                 for item2 in Tablero().lista_Piezas:
-                    if item2.posx == Tablero().lista_Bloques[item].poscx and item2.posy == Tablero().lista_Bloques[item].poscy:
+                    if item2.posx == item.poscx and item2.posy == item.poscy:
                         Tablero().posibles_mov(item2)#faltan los rayos x del peon
                         list_aux = item2.posibles_movimientos()
                         pygame.display.update()
-                        while True:
-                            for item3 in list_aux:
-                                for item_bloques in Tablero().lista_Bloques:
-                                    print ("tu vieja")
-                                    if item_bloques.poscx == item3[0] and item_bloques.poscy == item3[1] and evento.type == pygame.MOUSEBUTTONDOWN and mouse[0] == item_bloques.traduccionx and mouse[1] == item_bloques.traducciony:
-                                        item2.mover(item3[0],item3[1])
-                                        ventana.blit(item2.imagen, (item_bloques.traduccionx, item_bloques.traducciony))
-                                        break
+                        Tablero().no_me_rompas_las_bolas_maxi(list_aux,item2,evento,mouse)
+                        Tablero().imprimir()
+        if evento.type == QUIT:
+            pygame.quit()
+            sys.exit()
 
-
-            if evento.type == QUIT:
-                pygame.quit()
-                sys.exit()
 
 
         pygame.display.update()

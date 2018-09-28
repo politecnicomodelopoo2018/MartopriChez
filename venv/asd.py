@@ -151,3 +151,18 @@ a.viva = True
 a.var_inicial = True
 Tablero().lista_Piezas.append(a)
 
+def no_me_rompas_las_bolas_maxi(self,list_aux):
+    while True:
+        for item3 in list_aux:
+            for item_bloques in Tablero().lista_Bloques:
+                print(list_aux)
+                print(item3[0])
+                print(item3[1])
+
+                if evento.type == pygame.MOUSEBUTTONDOWN and \
+                        item_bloques.traduccionx + 82 > mouse[0] > item_bloques.traduccionx and \
+                        item_bloques.traducciony + 82 > mouse[1] > item_bloques.traducciony:
+                    item2.mover(item3[0], item3[1])
+                    print("tu vieja")
+                    ventana.blit(item2.imagen, (item_bloques.traduccionx, item_bloques.traducciony))
+                    return
