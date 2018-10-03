@@ -88,19 +88,16 @@ class Tablero(object):
             for event in pygame.event.get(KEYUP):
                 for item in list_aux:
 
-
+                    if event.key == K_SPACE:
+                        xm=mouse[0]
+                        ym=mouse[1]
+                        print(xm,ym)
                         for item_bloques in Tablero().lista_Bloques:
-                            if event.key == K_SPACE:
-                                xm = mouse[0]
-                                ym = mouse[1]
-                                print(xm, ym)
-
+                            cy = item_bloques.poscy
+                            cx = item_bloques.poscx
+                            print(cx,cy)
                             if item_bloques.traduccionx + 82 > xm and xm > item_bloques.traduccionx and \
                                      item_bloques.traducciony + 82 > ym and ym > item_bloques.traducciony:
-
-                                cy = item_bloques.poscy
-                                cx = item_bloques.poscx
-                                print(cx,cy)
                                 pieza.mover(cx,cy)
                                 return
 
