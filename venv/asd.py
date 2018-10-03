@@ -166,3 +166,6 @@ def no_me_rompas_las_bolas_maxi(self,list_aux):
                     print("tu vieja")
                     ventana.blit(item2.imagen, (item_bloques.traduccionx, item_bloques.traducciony))
                     return
+
+
+Tablero().no_me_rompas_las_bolas_maxi(lista_de_posibles_mov, pieza, evento, mouse)

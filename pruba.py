@@ -50,32 +50,38 @@ Tablero().lista_Piezas.append(rey)
 Tablero().crear_Bloques()
 
 pepin = 0
+for item in Tablero().lista_Piezas:
+    for item2 in Tablero().lista_Bloques:
+        if item2.poscx == item.posx and item2.poscy == item.posy:
+            ventana.blit(item.imagen, (item2.traduccionx + 20, item2.traducciony + 5))
+            item2.esta_Vacio()
 while True:
-    for item in Tablero().lista_Piezas:
-        for item2 in Tablero().lista_Bloques:
-            if item2.poscx == item.posx and item2.poscy == item.posy:
-                ventana.blit(item.imagen, (item2.traduccionx + 20, item2.traducciony + 5))
-                item2.esta_Vacio()
+
+
 
     for evento in pygame.event.get():
         mouse = pygame.mouse.get_pos()
 
+        keys = pygame.key.get_pressed()
+        if keys[K_LEFT]:
+            for item in Tablero().lista_Bloques:
+
+                if item.traduccionx + 82 > mouse[0] > item.traduccionx and \
+                        item.traducciony + 82 > mouse[1] > item.traducciony \
+                        and item.Vacio is False:
+
+                    for pieza in Tablero().lista_Piezas:
+
+                        if pieza.posx == item.poscx and pieza.posy == item.poscy:
+                            lista_de_posibles_mov = Tablero().posibles_mov(pieza)
+                            print(lista_de_posibles_mov)
+                            pygame.display.update()
+                            Tablero().no_me_rompas_las_bolas_maxi(lista_de_posibles_mov, pieza, evento, mouse)
+                            Tablero().imprimir()
 
 
-        for item in Tablero().lista_Bloques:
 
-            if item.traduccionx + 82 > mouse[0]> item.traduccionx and\
-                    item.traducciony + 82 > mouse[1]> item.traducciony \
-                    and evento.type == pygame.MOUSEBUTTONDOWN and item.Vacio is False:
 
-                print(item.Nombre)
-                for item2 in Tablero().lista_Piezas:
-                    if item2.posx == item.poscx and item2.posy == item.poscy:
-                        Tablero().posibles_mov(item2)#faltan los rayos x del peon
-                        list_aux = item2.posibles_movimientos()
-                        pygame.display.update()
-                        Tablero().no_me_rompas_las_bolas_maxi(list_aux,item2,evento,mouse)
-                        Tablero().imprimir()
         if evento.type == QUIT:
             pygame.quit()
             sys.exit()

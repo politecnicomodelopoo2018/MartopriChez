@@ -1,6 +1,8 @@
 import pygame, sys
 from pygame.locals import *
 from ClasesPiezas import *
+import time
+
 a = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
 ventana = pygame.display.set_mode((700,700))
 
@@ -30,7 +32,7 @@ class Tablero(object):
         for item in list_aux:
 
             ventana.blit(a,(item.traduccionx, item.traducciony))
-
+        return lista_a_imprimir
 
     #despues de un mov llamar a esta funcion para imprimir una pieza
     def imprimir(self):
@@ -40,6 +42,7 @@ class Tablero(object):
             for item_bloques in self.lista_Bloques:
                 if item.viva and item.posx == item_bloques.poscx and item.posy == item_bloques.poscy:
                     ventana.blit(item.imagen,(item_bloques.traduccionx + 20,item_bloques.traducciony + 5))
+                    pygame.display.update()
 
 
     def crear_Bloques(self):
@@ -79,21 +82,27 @@ class Tablero(object):
             traducy -= 82
 
     def no_me_rompas_las_bolas_maxi(self, list_aux,pieza,evento,mouse):#mover las piezas
-        x,y=0,0
-        while True:
-            for item3 in list_aux:
-                for item_bloques in Tablero().lista_Bloques:
-                    if evento.type == pygame.MOUSEBUTTONDOWN and \
-                            item_bloques.traduccionx + 82 > mouse[0] > item_bloques.traduccionx and \
-                            item_bloques.traducciony + 82 > mouse[1] > item_bloques.traducciony:
 
-                        x = item3[0]
-                        y = item3[1]
-                        print(x)
-                        print(y)
-                    if x !=0 and y != 0:
-                        pieza.mover(x, y)
-                        return
+        ym,xm=0,0
+        while True:
+            for event in pygame.event.get(KEYUP):
+                for item in list_aux:
+
+
+                        for item_bloques in Tablero().lista_Bloques:
+                            if event.key == K_SPACE:
+                                xm = mouse[0]
+                                ym = mouse[1]
+                                print(xm, ym)
+
+                            if item_bloques.traduccionx + 82 > xm and xm > item_bloques.traduccionx and \
+                                     item_bloques.traducciony + 82 > ym and ym > item_bloques.traducciony:
+
+                                cy = item_bloques.poscy
+                                cx = item_bloques.poscx
+                                print(cx,cy)
+                                pieza.mover(cx,cy)
+                                return
 
 
 class Bloque(object):
