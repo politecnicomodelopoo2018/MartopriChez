@@ -4,6 +4,7 @@ from ClasesTablero import *
 
 
 class pieza(object):
+    nombre = None
     color = None
     posx = None
     posy = None
@@ -31,18 +32,24 @@ class pieza(object):
 
 class rey(pieza):
 
+    def movimientos_invalidos(self):
+        lista_total = []
+        for item in Tablero().lista_Piezas:
+            print("hodfdfdla")
+        if item.posx == self.posx and not item.posy == self.posy:
+            lista_total += item.posibles_movimientos()
+
+        return lista_total
+
     def posibles_movimientos(self):
 
         lista_total_de_lugares=[]
-        lista_total = []
+        lista_total = self.movimientos_invalidos()
 
-        for item in Tablero().lista_Piezas:
-            if item.posx == self.posx and not item.posy == self.posy:
-                lista_total += item.posibles_movimientos()
 
         for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
             if self.posy != item.posy and self.posx != item.posx and self.color == item.color:
-
+                print(9)
                 lista_aux = []
                 lista_aux.append(item.posx)
                 lista_aux.append(item.posy)
@@ -55,7 +62,7 @@ class rey(pieza):
         VariableParaImprimirx = self.posx + 1
 
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-            if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+            #if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total_de_lugares:
                     lista_aux = []
                     lista_aux.append(VariableParaImprimirx)
@@ -66,7 +73,7 @@ class rey(pieza):
         VariableParaImprimirx = self.posx+ 1
 
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-            if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+            #if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 lista_aux = []
                 lista_aux.append(VariableParaImprimirx)
                 lista_aux.append(VariableParaImprimiry)
@@ -76,7 +83,7 @@ class rey(pieza):
         VariableParaImprimirx = self.posx + 1
 
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-            if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+            #if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 lista_aux = []
                 lista_aux.append(VariableParaImprimirx)
                 lista_aux.append(VariableParaImprimiry)
@@ -86,7 +93,7 @@ class rey(pieza):
         VariableParaImprimirx = self.posx + 0
 
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-            if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+            #if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 lista_aux = []
                 lista_aux.append(VariableParaImprimirx)
                 lista_aux.append(VariableParaImprimiry)
@@ -96,7 +103,7 @@ class rey(pieza):
         VariableParaImprimirx = self.posx - 1
 
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-            if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+            #if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 lista_aux = []
                 lista_aux.append(VariableParaImprimirx)
                 lista_aux.append(VariableParaImprimiry)
@@ -106,7 +113,7 @@ class rey(pieza):
         VariableParaImprimirx = self.posx - 1
 
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-            if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+            #if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 lista_aux = []
                 lista_aux.append(VariableParaImprimirx)
                 lista_aux.append(VariableParaImprimiry)
@@ -116,7 +123,7 @@ class rey(pieza):
         VariableParaImprimirx = self.posx - 1
 
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-            if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+            #if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 lista_aux = []
                 lista_aux.append(VariableParaImprimirx)
                 lista_aux.append(VariableParaImprimiry)
@@ -126,13 +133,13 @@ class rey(pieza):
         VariableParaImprimirx = self.posx + 0
 
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-            if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+            #if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 lista_aux = []
                 lista_aux.append(VariableParaImprimirx)
                 lista_aux.append(VariableParaImprimiry)
                 posibles_mov.append(lista_aux)
 
-        posibles_mov += self.enroque()
+        #posibles_mov += self.enroque()
 
         return posibles_mov
 

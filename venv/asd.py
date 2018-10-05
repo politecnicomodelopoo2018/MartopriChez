@@ -169,3 +169,33 @@ def no_me_rompas_las_bolas_maxi(self,list_aux):
 
 
 Tablero().no_me_rompas_las_bolas_maxi(lista_de_posibles_mov, pieza, evento, mouse)
+
+if evento.type == pygame.KEYDOWN and hola != 0:
+    mouse2 = pygame.mouse.get_pos()
+
+    for bloque in Tablero().lista_Bloques:
+        for buscar in Tablero().lista_Piezas:
+            print("hola")
+
+            if buscar.nombre == piezamover:
+                buscar.posx = 3
+                Tablero().imprimir()
+                hola = 0
+                print(piezamover)
+                piezamover = ""
+
+            if buscar.posx == bloque.poscx and buscar.posy == bloque.poscy:
+                bloque.Vacio = False
+
+if evento.type == QUIT:
+    pygame.quit()
+    sys.exit()
+
+pygame.display.update()
+
+if evento.type == QUIT:
+    pygame.quit()
+    sys.exit()
+
+pygame.display.update()
+

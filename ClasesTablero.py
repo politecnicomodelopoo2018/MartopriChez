@@ -26,11 +26,13 @@ class Tablero(object):
         lista_a_imprimir = pieza.posibles_movimientos()
         list_aux = []
         for mov in lista_a_imprimir:
+            print(10)
             for item in self.lista_Bloques:
+                print(11)
                 if item.poscy == mov[1] and item.poscx == mov[0]:
                     list_aux.append(item)
         for item in list_aux:
-
+            print(12)
             ventana.blit(a,(item.traduccionx, item.traducciony))
         return lista_a_imprimir
 
@@ -39,7 +41,9 @@ class Tablero(object):
 
         ventana.blit(self.imagen, (0,0))
         for item in self.lista_Piezas:
+            print(13)
             for item_bloques in self.lista_Bloques:
+                print(14)
                 if item.viva and item.posx == item_bloques.poscx and item.posy == item_bloques.poscy:
                     ventana.blit(item.imagen,(item_bloques.traduccionx + 20,item_bloques.traducciony + 5))
                     pygame.display.update()
@@ -81,25 +85,41 @@ class Tablero(object):
             y += 1
             traducy -= 82
 
-    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza,evento,mouse):#mover las piezas
+    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza):#mover las piezas
 
         ym,xm=0,0
-        while True:
-            for event in pygame.event.get(KEYUP):
-                for item in list_aux:
+        cx,cy=0,0
 
-                    if event.key == K_SPACE:
-                        xm=mouse[0]
-                        ym=mouse[1]
-                        print(xm,ym)
-                        for item_bloques in Tablero().lista_Bloques:
-                            cy = item_bloques.poscy
-                            cx = item_bloques.poscx
-                            print(cx,cy)
-                            if item_bloques.traduccionx + 82 > xm and xm > item_bloques.traduccionx and \
-                                     item_bloques.traducciony + 82 > ym and ym > item_bloques.traducciony:
-                                pieza.mover(cx,cy)
-                                return
+        while True:
+            print("la re puta madre era el puto while ture")
+            mouse = pygame.mouse.get_pos()
+            for event in pygame.event.get():
+                    keys = pygame.key.get_pressed()
+
+
+                    for item in list_aux:
+
+                        print(4)
+                        if keys[K_SPACE]:
+                            xm = mouse[0]
+                            ym = mouse[1]
+                            for item_bloques in Tablero().lista_Bloques:
+                                #print(5)
+                                if item_bloques.traduccionx + 82 > xm > item_bloques.traduccionx and \
+                                        item_bloques.traducciony + 82 > ym > item_bloques.traducciony:
+
+                                    cy=item_bloques.poscy
+                                    cx=item_bloques.poscx
+
+                                    if cx == item[0]  and cy == item[1]:
+
+                                        pieza.mover(cx,cy)
+                                        return
+
+    def esta_Vaciox2(self):
+        for item in self.lista_Bloques:
+            #print(6)
+            item.esta_Vacio()
 
 
 class Bloque(object):
@@ -114,6 +134,7 @@ class Bloque(object):
     def esta_Vacio(self):
 
         for item in Tablero().lista_Piezas:
+            #print(7)
             if item.posx == self.poscx and item.posy == self.poscy:
                 self.Vacio = False
                 return
