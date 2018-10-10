@@ -112,7 +112,6 @@ class Tablero(object):
                                     cx=item_bloques.poscx
 
                                     if cx == item[0]  and cy == item[1]:
-
                                         pieza.mover(cx,cy)
                                         return
 

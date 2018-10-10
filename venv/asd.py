@@ -199,3 +199,115 @@ if evento.type == QUIT:
 
 pygame.display.update()
 
+
+
+
+
+
+
+def posibles_movimientos(self):
+    lista_total_de_lugares = []
+    lista_total = self.movimientos_invalidos()
+
+    for item in Tablero().lista_Piezas:  # no salta sobre piesas del mismo color
+        if self.posy != item.posy and self.posx != item.posx and self.color == item.color:
+            print(9)
+            lista_aux = []
+            lista_aux.append(item.posx)
+            lista_aux.append(item.posy)
+            lista_total_de_lugares.append(lista_aux)
+
+    posibles_mov = []
+
+    VariableParaImprimiry = self.posy + 1
+    VariableParaImprimirx = self.posx + 1
+
+    if not (
+            VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+        # if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+        if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+            lista_aux = []
+            lista_aux.append(VariableParaImprimirx)
+            lista_aux.append(VariableParaImprimiry)
+            posibles_mov.append(lista_aux)
+
+    VariableParaImprimiry = self.posy + 0
+    VariableParaImprimirx = self.posx + 1
+
+    if not (
+            VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+        # if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+        lista_aux = []
+        lista_aux.append(VariableParaImprimirx)
+        lista_aux.append(VariableParaImprimiry)
+        posibles_mov.append(lista_aux)
+
+    VariableParaImprimiry = self.posy - 1
+    VariableParaImprimirx = self.posx + 1
+
+    if not (
+            VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+        # if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+        lista_aux = []
+        lista_aux.append(VariableParaImprimirx)
+        lista_aux.append(VariableParaImprimiry)
+        posibles_mov.append(lista_aux)
+
+    VariableParaImprimiry = self.posy - 1
+    VariableParaImprimirx = self.posx + 0
+
+    if not (
+            VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+        # if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+        lista_aux = []
+        lista_aux.append(VariableParaImprimirx)
+        lista_aux.append(VariableParaImprimiry)
+        posibles_mov.append(lista_aux)
+
+    VariableParaImprimiry = self.posy - 1
+    VariableParaImprimirx = self.posx - 1
+
+    if not (
+            VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+        # if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+        lista_aux = []
+        lista_aux.append(VariableParaImprimirx)
+        lista_aux.append(VariableParaImprimiry)
+        posibles_mov.append(lista_aux)
+
+    VariableParaImprimiry = self.posy + 0
+    VariableParaImprimirx = self.posx - 1
+
+    if not (
+            VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+        # if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+        lista_aux = []
+        lista_aux.append(VariableParaImprimirx)
+        lista_aux.append(VariableParaImprimiry)
+        posibles_mov.append(lista_aux)
+
+    VariableParaImprimiry = self.posy + 1
+    VariableParaImprimirx = self.posx - 1
+
+    if not (
+            VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+        # if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+        lista_aux = []
+        lista_aux.append(VariableParaImprimirx)
+        lista_aux.append(VariableParaImprimiry)
+        posibles_mov.append(lista_aux)
+
+    VariableParaImprimiry = self.posy + 1
+    VariableParaImprimirx = self.posx + 0
+
+    if not (
+            VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+        # if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
+        lista_aux = []
+        lista_aux.append(VariableParaImprimirx)
+        lista_aux.append(VariableParaImprimiry)
+        posibles_mov.append(lista_aux)
+
+    # posibles_mov += self.enroque()
+
+    return posibles_mov
