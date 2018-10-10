@@ -3,7 +3,7 @@ from pygame.locals import *
 from ClasesPiezas import *
 import time
 
-a = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
+a = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/Bola_naranja.png")
 ventana = pygame.display.set_mode((700,700))
 
 class Tablero(object):
@@ -11,7 +11,7 @@ class Tablero(object):
     instance = None
 
     def __init__(self):
-        self.imagen = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
+        self.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/Tablero.jpg")
 
 
     def __new__(cls, *args, **kwargs):
@@ -137,4 +137,4 @@ class Bloque(object):
             if item.posx == self.poscx and item.posy == self.poscy:
                 self.Vacio = False
                 return
-        self.Vacio = True
+

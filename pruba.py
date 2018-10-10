@@ -17,7 +17,7 @@ for item in range(8):
     a.color = "Blanco"
     a.posx = x
     a.posy = y
-    a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/peon_Blanco.png")
+    a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/peon_Blanco.png")
     a.viva = True
     a.var_inicial = True
     Tablero().lista_Piezas.append(a)
@@ -32,7 +32,7 @@ for item in range(8):
     a.color = "Negro"
     a.posx = x
     a.posy = y
-    a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/peon_Negro.png")
+    a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/peon_Negro.png")
     a.viva = True
     a.var_inicial = True
     Tablero().lista_Piezas.append(a)
@@ -49,7 +49,7 @@ a.color = "Blanco"
 a._id = 1
 a.posx = x
 a.posy = y
-a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/rey_Blanco.png")
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/rey_Blanco.png")
 a.viva = True
 a.var_inicial = True
 Tablero().lista_Piezas.append(a)
@@ -61,7 +61,7 @@ a._id = 0
 a.color = "Negro"
 a.posx = x
 a.posy = y
-a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/rey_Negro.png")
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/rey_Negro.png")
 a.viva = True
 a.var_inicial = True
 Tablero().lista_Piezas.append(a)
@@ -76,7 +76,7 @@ a.color = "Blanco"
 a._id = 20
 a.posx = x
 a.posy = y
-a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Blanco.png")
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/reina_Blanco.png")
 a.viva = True
 a.var_inicial = True
 Tablero().lista_Piezas.append(a)
@@ -88,7 +88,7 @@ a.color = "Negro"
 a._id = 21
 a.posx = x
 a.posy = y
-a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Negro.png")
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/reina_Negro.png")
 a.viva = True
 a.var_inicial = True
 Tablero().lista_Piezas.append(a)
@@ -100,7 +100,7 @@ ventana = pygame.display.set_mode((700,700))
 red = (255, 0, 0)
 blue = (0, 255, 0)
 
-Board = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
+Board = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/Tablero.jpg")
 posX, posY = 0, 0
 pygame.display.set_caption("Martorille chess")
 ventana.blit(Board, (posX, posY))
