@@ -92,17 +92,21 @@ class Tablero(object):
 
         while True:
             print("la re puta madre era el puto while ture")
+
             mouse = pygame.mouse.get_pos()
+
             for event in pygame.event.get():
+
                     keys = pygame.key.get_pressed()
 
-
                     for item in list_aux:
+
 
                         if keys[K_SPACE]:
                             xm = mouse[0]
                             ym = mouse[1]
                             for item_bloques in Tablero().lista_Bloques:
+
                                 if item_bloques.traduccionx + 82 > xm > item_bloques.traduccionx and \
                                         item_bloques.traducciony + 82 > ym > item_bloques.traducciony:
 
@@ -112,6 +116,8 @@ class Tablero(object):
                                     if cx == item[0]  and cy == item[1]:
                                         pieza.mover(cx,cy)
                                         return
+                    if keys[K_1]:
+                        return
 
     def esta_Vaciox2(self):
         for item in self.lista_Bloques:

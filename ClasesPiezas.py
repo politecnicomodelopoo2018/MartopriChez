@@ -168,7 +168,7 @@ class rey(pieza):
                         lista_aux.append(VariableParaImprimiry)
                         posibles_mov.append(lista_aux)
 
-        #posibles_mov += self.enroque()
+        posibles_mov += self.enroque()
 
         return posibles_mov
 
@@ -184,11 +184,11 @@ class rey(pieza):
         if self.inicial == True and torre1.inicial == True:
             x = self.posx-2
             y = self.posy
-            lista =+ [[x,y]]
+            lista += [[x,y]]
         if self.inicial == True and torre2.inicial == True:
             x = self.posx+2
             y = self.posy
-            lista =+ [[x,y]]
+            lista += [[x,y]]
         return lista
 
 
@@ -324,7 +324,7 @@ class torre(pieza):
 
         for item in range(8):
 
-            i=+1
+            i += 1
 
             list_aux = []
 
@@ -362,12 +362,16 @@ class torre(pieza):
         return lista_de_rayosx
 
     def posibles_movimientos(self):
-
+        reyx = 0
+        reyy = 0
         lista_de_mov_posibles = []
-
-        lista_total_de_lugares = []
-
+        lista_color_opuesto = self.diferenciarColor()
+        lista_total_de_lugares = self.diferenciar()
         lista_totalx = []
+        if1 = True
+        if2 = True
+        if3 = True
+        if4 = True
 
         for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
             if self.posy != item.posy and self.posx != item.posx and self.color == item.color:
@@ -387,45 +391,66 @@ class torre(pieza):
             i = 0
             for item in range(8):
 
-                i = +1
+                i += 1
 
                 list_aux = []
 
                 VariableParaImprimiry = self.posy + i
                 VariableParaImprimirx = self.posx
-                if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
-                        list_aux.append(VariableParaImprimirx)
-                        list_aux.append(VariableParaImprimiry)
-                        lista_de_mov_posibles.append(list_aux)
-                        list_aux = []
+                if if1:
+
+                    if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+                        if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                            list_aux.append(VariableParaImprimirx)
+                            list_aux.append(VariableParaImprimiry)
+                            lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
+                            if [VariableParaImprimirx, VariableParaImprimiry] in lista_color_opuesto:
+                                if1 = False
+                        else:
+                                if1 = False
+
 
                 VariableParaImprimiry = self.posy - i
                 VariableParaImprimirx = self.posx
-                if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
-                        list_aux.append(VariableParaImprimirx)
-                        list_aux.append(VariableParaImprimiry)
-                        lista_de_mov_posibles.append(list_aux)
-                        list_aux = []
+                if if2:
+                    if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+                        if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                            list_aux.append(VariableParaImprimirx)
+                            list_aux.append(VariableParaImprimiry)
+                            lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
+                            if [VariableParaImprimirx, VariableParaImprimiry] in lista_color_opuesto:
+                                if2 = False
+                        else:
+                                if2 = False
 
                 VariableParaImprimiry = self.posy
                 VariableParaImprimirx = self.posx + i
-                if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
-                        list_aux.append(VariableParaImprimirx)
-                        list_aux.append(VariableParaImprimiry)
-                        lista_de_mov_posibles.append(list_aux)
-                        list_aux = []
+                if if3:
+                    if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+                        if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                            list_aux.append(VariableParaImprimirx)
+                            list_aux.append(VariableParaImprimiry)
+                            lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
+                            if [VariableParaImprimirx, VariableParaImprimiry] in lista_color_opuesto:
+                                if3 = False
+                        else:
+                                if3 = False
 
                 VariableParaImprimiry = self.posy
                 VariableParaImprimirx = self.posx - i
-                if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
-                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
-                        list_aux.append(VariableParaImprimirx)
-                        list_aux.append(VariableParaImprimiry)
-                        lista_de_mov_posibles.append(list_aux)
-
+                if if4:
+                    if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+                        if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                            list_aux.append(VariableParaImprimirx)
+                            list_aux.append(VariableParaImprimiry)
+                            lista_de_mov_posibles.append(list_aux)
+                            if [VariableParaImprimirx, VariableParaImprimiry] in lista_color_opuesto:
+                                if4 = False
+                        else:
+                                if4 = False
 
             return lista_de_mov_posibles
         vacia = []
@@ -484,7 +509,7 @@ class alfil(pieza):
         reyy = 0
         lista_de_mov_posibles = []
         lista_color_opuesto = self.diferenciarColor()
-        lista_total_de_lugares = []
+        lista_total_de_lugares = self.diferenciar()
         lista_totalx = []
         if1 = True
         if2 = True
@@ -492,12 +517,7 @@ class alfil(pieza):
         if4 = True
 
 
-        for item in Tablero().lista_Piezas:#no salta sobre piesas del mismo color
-            if self.posy != item.posy and self.posx != item.posx and self.color == item.color:
-                lista_aux = []
-                lista_aux.append(item.posx)
-                lista_aux.append(item.posy)
-                lista_total_de_lugares.append(lista_aux)
+
 
         for item in Tablero().lista_Piezas:#ataque al rey por rayosx
             if item.__class__.__name__ == "rey" and self.color == item.color:
