@@ -234,7 +234,7 @@ Tablero().lista_Piezas.append(a)
 y = 8
 x = 8
 a = torre()
-a._id = 58
+a._id = 59
 a.color = "Negro"
 a.posx = x
 a.posy = y

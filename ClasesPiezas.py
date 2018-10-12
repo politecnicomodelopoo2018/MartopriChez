@@ -173,23 +173,53 @@ class rey(pieza):
         return posibles_mov
 
     def enroque(self):
+        lista_total_de_lugares = self.diferenciar()
         if self.color == "Blanco":
             lista = []
             torre1=None
             torre2=None
+
+            for bloque in Tablero().lista_Bloques:
+                if Bloque.esta_Vacio() == False:
+                    return
             for item in Tablero().lista_Piezas:
+
                 if item._id == 56:
                     torre1 = item
                 if item._id == 57:
                     torre2 = item
+
             if self.var_inicial == True and torre1.var_inicial == True:
                 x = self.posx-2
                 y = self.posy
-                lista += [[x,y]]
+                torre1.posx += 2
+                if not [x, y] in lista_total_de_lugares:
+                    lista += [[x,y]]
             if self.var_inicial == True and torre2.var_inicial == True:
                 x = self.posx+2
                 y = self.posy
-                lista += [[x,y]]
+                if not [x, y] in lista_total_de_lugares:
+                    lista += [[x,y]]
+            return lista
+        else:
+            lista = []
+            torre1 = None
+            torre2 = None
+            for item in Tablero().lista_Piezas:
+                if item._id == 58:
+                    torre1 = item
+                if item._id == 59:
+                    torre2 = item
+            if self.var_inicial == True and torre1.var_inicial == True:
+                x = self.posx - 2
+                y = self.posy
+                if not [x, y] in lista_total_de_lugares:
+                    lista += [[x, y]]
+            if self.var_inicial == True and torre2.var_inicial == True:
+                x = self.posx + 2
+                y = self.posy
+                if not [x, y] in lista_total_de_lugares:
+                    lista += [[x, y]]
             return lista
 
 
