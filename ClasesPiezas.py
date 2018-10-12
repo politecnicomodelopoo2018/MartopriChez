@@ -194,7 +194,8 @@ class rey(pieza):
 class caballo(pieza):
 
     def posibles_movimientos(self):
-
+        reyx = 0
+        reyy = 0
         lista_totalx = []
 
         lista_total_de_lugares=[]
@@ -808,6 +809,7 @@ class peon(pieza):
 
         if self.color == "Blanco":
             if  [reyx , reyy] not in lista_totalx:
+
                 list_aux = []
                 VariableParaImprimiry = self.posy + 1
                 VariableParaImprimirx = self.posx
@@ -829,6 +831,22 @@ class peon(pieza):
                             list_aux.append(VariableParaImprimirx)
                             list_aux.append(VariableParaImprimiry)
                             lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
+
+                for comer in Tablero().lista_Piezas:
+                    if comer.posx == self.posx + 1 and comer.posy == self.posy + 1 and comer.color != self.color:
+                            list_aux.append(self.posx+1)
+                            list_aux.append(self.posy+1)
+                            lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
+
+                    if comer.posx == self.posx - 1 and comer.posy == self.posy + 1 and comer.color != self.color:
+                            list_aux.append(self.posx-1)
+                            list_aux.append(self.posy+1)
+                            lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
+
+
 
         else:
             if  [reyx, reyy] not in lista_totalx:
@@ -836,24 +854,38 @@ class peon(pieza):
                 VariableParaImprimiry = self.posy - 1
                 VariableParaImprimirx = self.posx
 
-                if not (
-                        VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+                if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
                     if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
-                        list_aux.append(VariableParaImprimirx)
-                        list_aux.append(VariableParaImprimiry)
-                        lista_de_mov_posibles.append(list_aux)
-                        list_aux = []
+                        if not [VariableParaImprimirx, VariableParaImprimiry] in lista_de_opuestos:
+                            list_aux.append(VariableParaImprimirx)
+                            list_aux.append(VariableParaImprimiry)
+                            lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
 
                 VariableParaImprimiry = self.posy -2
                 VariableParaImprimirx = self.posx
 
-                if not (
-                        VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
+                if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
                     if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
-                        if self.var_inicial:
-                            list_aux.append(VariableParaImprimirx)
-                            list_aux.append(VariableParaImprimiry)
+                        if not [VariableParaImprimirx, VariableParaImprimiry] in lista_de_opuestos:
+                            if self.var_inicial:
+                                list_aux.append(VariableParaImprimirx)
+                                list_aux.append(VariableParaImprimiry)
+                                lista_de_mov_posibles.append(list_aux)
+
+                for comer in Tablero().lista_Piezas:
+                    if comer.posx == self.posx - 1 and comer.posy == self.posy - 1 and comer.color != self.color:
+                            list_aux.append(self.posx-1)
+                            list_aux.append(self.posy-1)
                             lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
+
+                    if comer.posx == self.posx + 1 and comer.posy == self.posy - 1 and comer.color != self.color:
+                            list_aux.append(self.posx+1)
+                            list_aux.append(self.posy-1)
+                            lista_de_mov_posibles.append(list_aux)
+                            list_aux = []
+
 
         return lista_de_mov_posibles
 

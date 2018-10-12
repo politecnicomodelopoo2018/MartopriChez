@@ -7,6 +7,7 @@ from ClasesTablero import *
 
 pygame.init()
 
+
 x=0
 y=2
 cont = 10
@@ -89,6 +90,57 @@ a._id = 21
 a.posx = x
 a.posy = y
 a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/reina_Negro.png")
+a.viva = True
+a.var_inicial = True
+Tablero().lista_Piezas.append(a)
+
+y = 1
+x = 2
+
+a = caballo()
+a._id = 40
+a.color = "Blanco"
+a.posx = x
+a.posy = y
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/caballo_Blanco.png")
+a.viva = True
+a.var_inicial = True
+Tablero().lista_Piezas.append(a)
+
+y = 1
+x = 7
+
+a = caballo()
+a._id = 41
+a.color = "Blanco"
+a.posx = x
+a.posy = y
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/caballo_Blanco.png")
+a.viva = True
+a.var_inicial = True
+Tablero().lista_Piezas.append(a)
+
+
+y = 8
+x = 2
+a = caballo()
+a._id = 42
+a.color = "Negro"
+a.posx = x
+a.posy = y
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/caballo_Negro.png")
+a.viva = True
+a.var_inicial = True
+Tablero().lista_Piezas.append(a)
+
+y = 8
+x = 7
+a = caballo()
+a._id = 42
+a.color = "Negro"
+a.posx = x
+a.posy = y
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/caballo_Negro.png")
 a.viva = True
 a.var_inicial = True
 Tablero().lista_Piezas.append(a)
