@@ -71,6 +71,7 @@ class pieza(object):
 
          self.var_inicial = False
 
+
 class rey(pieza):
 
 

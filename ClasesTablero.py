@@ -99,12 +99,10 @@ class Tablero(object):
 
                     for item in list_aux:
 
-                        print(4)
                         if keys[K_SPACE]:
                             xm = mouse[0]
                             ym = mouse[1]
                             for item_bloques in Tablero().lista_Bloques:
-                                #print(5)
                                 if item_bloques.traduccionx + 82 > xm > item_bloques.traduccionx and \
                                         item_bloques.traducciony + 82 > ym > item_bloques.traducciony:
 
@@ -117,7 +115,6 @@ class Tablero(object):
 
     def esta_Vaciox2(self):
         for item in self.lista_Bloques:
-            #print(6)
             item.esta_Vacio()
 
 
@@ -133,7 +130,6 @@ class Bloque(object):
     def esta_Vacio(self):
 
         for item in Tablero().lista_Piezas:
-            #print(7)
             if item.posx == self.poscx and item.posy == self.poscy:
                 self.Vacio = False
                 return
