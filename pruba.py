@@ -145,6 +145,31 @@ a.viva = True
 a.var_inicial = True
 Tablero().lista_Piezas.append(a)
 
+y = 8
+x = 3
+
+a = alfil()
+a._id = 50
+a.color = "Negro"
+a.posx = x
+a.posy = y
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/alfil_Negro.png")
+a.viva = True
+a.var_inicial = True
+Tablero().lista_Piezas.append(a)
+
+y = 8
+x = 6
+
+a = alfil()
+a._id = 51
+a.color = "Negro"
+a.posx = x
+a.posy = y
+a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/alfil_Negro.png")
+a.viva = True
+a.var_inicial = True
+Tablero().lista_Piezas.append(a)
 
 
 
