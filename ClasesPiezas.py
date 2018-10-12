@@ -178,9 +178,9 @@ class rey(pieza):
             torre1=None
             torre2=None
             for item in Tablero().lista_Piezas:
-                if item.posx == 1 and item.posy == 1 and item.color == "Blanco" and item.__class__.__name__ == "Torre":
+                if item._id == 56:
                     torre1 = item
-                if item.posx == 8 and item.posy == 1 and item.color == "Blanco" and item.__class__.__name__ == "Torre":
+                if item._id == 57:
                     torre2 = item
             if self.inicial == True and torre1.inicial == True:
                 x = self.posx-2
