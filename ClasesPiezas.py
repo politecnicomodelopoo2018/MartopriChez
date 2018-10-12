@@ -173,23 +173,24 @@ class rey(pieza):
         return posibles_mov
 
     def enroque(self):
-
-        lista = []
-
-        for item in Tablero().lista_Piezas:
-            if item.posx == 1 and item.posy == 1 and item.color == "Blanco" and item.__class__.__name__ == "Torre":
-                torre1 = item
-            if item.posx == 8 and item.posy == 1 and item.color == "Blanco" and item.__class__.__name__ == "Torre":
-                torre2 = item
-        if self.inicial == True and torre1.inicial == True:
-            x = self.posx-2
-            y = self.posy
-            lista += [[x,y]]
-        if self.inicial == True and torre2.inicial == True:
-            x = self.posx+2
-            y = self.posy
-            lista += [[x,y]]
-        return lista
+        if self.color == "Blanco":
+            lista = []
+            torre1=None
+            torre2=None
+            for item in Tablero().lista_Piezas:
+                if item.posx == 1 and item.posy == 1 and item.color == "Blanco" and item.__class__.__name__ == "Torre":
+                    torre1 = item
+                if item.posx == 8 and item.posy == 1 and item.color == "Blanco" and item.__class__.__name__ == "Torre":
+                    torre2 = item
+            if self.inicial == True and torre1.inicial == True:
+                x = self.posx-2
+                y = self.posy
+                lista += [[x,y]]
+            if self.inicial == True and torre2.inicial == True:
+                x = self.posx+2
+                y = self.posy
+                lista += [[x,y]]
+            return lista
 
 
 class caballo(pieza):
