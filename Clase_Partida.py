@@ -4,6 +4,7 @@ from ClasesPiezas import *
 from ClasesTablero import *
 from bdd import *
 from Clase_Partida import *
+import datetime
 
 class Partida(object):
 
@@ -18,10 +19,15 @@ class Partida(object):
 
         self.lista_mov=[]
 
-    def crear_partida(self):
+    def crear_partida(self,_id,Nombre,jb,_idjb,jn,_idjn):
 
+        self._id = _id
+        self.Nombre = Nombre
+        self.jugador_Blanco = jb
+        self._id_jugador_Blanco = _idjb
+        self.jugador_Negro = jn
+        self._id_jugador_Negro = _idjn
 
-        BD().run("Insert INTO Partida values (Null ,'" + self.Nombre + "," + self._id_jugador_Blanco + "," + self._id_jugador_Negro + "')")
 
     def guardar_mov(self,pieza,partida):
 
@@ -48,5 +54,3 @@ class jugador(object):
         self._id = id
         self.Nombre=Nombre
         self.elo=elo
-
-    def calcular_elo(self):

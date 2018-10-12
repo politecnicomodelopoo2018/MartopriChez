@@ -1,6 +1,5 @@
 import pymysql
 import time
-from ClasesPiezas import *
 from ClasesTablero import *
 from bdd import *
 from Clase_Partida import *
@@ -19,8 +18,8 @@ class GM(object):
 
     def descargar_partidas(self,id_partida):
 
-        obj_partida = DB().run("select * from Partida where idPartida = " + str(id_partida))
-        dic_mov = DB().run("select * from Posiciones where idPartida = " + str(id_partida))
+        obj_partida = BD().run("select * from Partida where idPartida = " + str(id_partida))
+        dic_mov = BD().run("select * from Posiciones where idPartida = " + str(id_partida))
         a=Partida()
         a.jugador_Blanco = obj_partida["Jugador_idJugador"]
         a.jugador_Negro = obj_partida["Jugador_idJugador1"]
@@ -40,3 +39,16 @@ class GM(object):
                             Tablero().imprimir()
                             time.sleep(3)
 
+    def descarga_datos(self):
+
+        jugador=BD().run("select * from Jugador")
+        for item in jugador:
+            a = jugador()
+            a.crear_jugador(item["idJugador"],item["Nombre"],item["elo"])
+
+        partidas=BD().run("select * from Partida")
+        for item in partidas:
+            xD = BD().run("select Nombre from Jugador where idJugador =" + item["Jugador_idJugador"])
+            xD1 = BD().run("select Nombre from Jugador where idJugador =" + item["Jugador_idJugador"])
+            b = Partida()
+            b.crear_partida(item["idPartida"],item["Nombre"],xD,item["Jugador_idJugador"],xD1,item["Jugador_idJugador"])
