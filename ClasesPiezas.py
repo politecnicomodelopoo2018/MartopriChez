@@ -182,11 +182,11 @@ class rey(pieza):
                     torre1 = item
                 if item._id == 57:
                     torre2 = item
-            if self.inicial == True and torre1.inicial == True:
+            if self.var_inicial == True and torre1.var_inicial == True:
                 x = self.posx-2
                 y = self.posy
                 lista += [[x,y]]
-            if self.inicial == True and torre2.inicial == True:
+            if self.var_inicial == True and torre2.var_inicial == True:
                 x = self.posx+2
                 y = self.posy
                 lista += [[x,y]]
