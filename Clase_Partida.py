@@ -3,7 +3,6 @@ import time
 from ClasesPiezas import *
 from ClasesTablero import *
 from bdd import *
-from Clase_Partida import *
 import datetime
 
 class Partida(object):
