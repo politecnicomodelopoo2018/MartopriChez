@@ -73,11 +73,28 @@ class pieza(object):
 
 class rey(pieza):
 
+    def jaque(self):
 
-    def posibles_movimientos(self):
+        list_aux = []
+        list_aux2 = []
+
+        for item in Tablero().lista_Piezas:
+
+            if not item.color == self.color:
+                list_aux += item.posibles_movimientos(False)
+
+        for item in list_aux:
+            if item[0] == self.posx and item[1] == self.posy:
+                list_aux2.append(item)
+        return list_aux2
+
+
+    def posibles_movimientos(self, chequearJaque=True):
 
         lista_total_de_lugares=self.diferenciar()
         lista_total = self.movimientos_invalidos()
+        if chequearJaque:
+            lista_donde_atacan = self.jaque()
 
 
         posibles_mov = []
@@ -88,6 +105,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx,VariableParaImprimiry] in lista_donde_atacan:
                             lista_aux = []
                             lista_aux.append(VariableParaImprimirx)
                             lista_aux.append(VariableParaImprimiry)
@@ -99,6 +117,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -110,6 +129,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -121,6 +141,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -131,6 +152,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -141,6 +163,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -152,6 +175,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -162,16 +186,17 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
                         posibles_mov.append(lista_aux)
 
-        posibles_mov += self.enroque()
+        posibles_mov += self.enroque(lista_donde_atacan)
 
         return posibles_mov
 
-    def enroque(self):
+    def enroque(self,lista_donde_atacan):
         lista_total_de_lugares = self.diferenciar()
         if self.color == "Blanco":
             lista = []
@@ -192,12 +217,14 @@ class rey(pieza):
                 x = self.posx-2
                 y = self.posy
                 if not [x, y] in lista_total_de_lugares:
-                    lista += [[x,y]]
+                   if not [x,y] in lista_donde_atacan:
+                        lista += [[x,y]]
             if self.var_inicial == True and torre2.var_inicial == True:
                 x = self.posx+2
                 y = self.posy
                 if not [x, y] in lista_total_de_lugares:
-                    lista += [[x,y]]
+                    if not [x, y] in lista_donde_atacan:
+                        lista += [[x,y]]
             return lista
         else:
             lista = []
@@ -223,7 +250,7 @@ class rey(pieza):
 
 class caballo(pieza):
 
-    def posibles_movimientos(self):
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_totalx = []

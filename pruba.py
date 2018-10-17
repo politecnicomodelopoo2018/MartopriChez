@@ -279,6 +279,9 @@ while True:
 
                     for pieza in Tablero().lista_Piezas:
 
+                        #agregar if para turnos cambio de color
+                        #funcion jaque
+
                         if pieza.posx == item.poscx and pieza.posy == item.poscy and pieza.viva == True:
                             lista_de_posibles_mov = Tablero().posibles_mov(pieza)
                             pygame.display.update()
