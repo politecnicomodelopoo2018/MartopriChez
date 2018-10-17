@@ -3,8 +3,8 @@ from pygame.locals import *
 from ClasesPiezas import *
 import time
 
-a = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
-ventana = pygame.display.set_mode((700,700))
+# a = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
+# ventana = pygame.display.set_mode((700,700))
 
 class Tablero(object):
 
