@@ -15,7 +15,6 @@ class pieza(object):
     def movimientos_invalidos(self):
         lista_total = []
         for item in Tablero().lista_Piezas:
-            print("hodfdfdla")
             if item.posx == self.posx and not item.posy == self.posy and item.color == pieza.color:
                 lista_total += item.posibles_movimientos()
 
@@ -409,7 +408,7 @@ class rey(pieza):
             torre2=None
 
             for bloque in Tablero().lista_Bloques:
-                if Bloque.esta_Vacio() == False:
+                if bloque.esta_Vacio() == False:
                     return
             for item in Tablero().lista_Piezas:
 
@@ -421,7 +420,6 @@ class rey(pieza):
             if self.var_inicial == True and torre1.var_inicial == True:
                 x = self.posx-2
                 y = self.posy
-                torre1.posx += 2
                 if not [x, y] in lista_total_de_lugares:
                     lista += [[x,y]]
             if self.var_inicial == True and torre2.var_inicial == True:
@@ -472,7 +470,7 @@ class caballo(pieza):
                 reyx = item.posx
                 reyy = item.posy
             if not (item.imagen == self.imagen and item.color == self.color):
-                print(item)
+
                 lista_totalx += item.rayosX()
 
         if [reyx , reyy] not in lista_totalx:
@@ -784,7 +782,7 @@ class alfil(pieza):
                 reyx = item.posx
                 reyy = item.posy
             if not (item.imagen == self.imagen and item.color == self.color):
-                print(item)
+
                 lista_totalx += item.rayosX()
 
         if [reyx, reyy] not in lista_totalx:
@@ -961,7 +959,7 @@ class reina(pieza):
                 reyx = item.posx
                 reyy = item.posy
             if not (item.imagen == self.imagen and item.color == self.color):
-                print (item)
+
                 lista_totalx += item.rayosX()
 
         if [reyx, reyy] not in lista_totalx:
@@ -969,7 +967,7 @@ class reina(pieza):
             for item in range(8):
 
                 i += 1
-                print(i)
+
                 list_aux = []
 
                 VariableParaImprimiry = self.posy + i

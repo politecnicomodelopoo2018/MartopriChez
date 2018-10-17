@@ -3,7 +3,7 @@ from pygame.locals import *
 from ClasesPiezas import *
 import time
 
-a = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/Bola_naranja.png")
+a = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
 ventana = pygame.display.set_mode((700,700))
 
 class Tablero(object):
@@ -11,7 +11,7 @@ class Tablero(object):
     instance = None
 
     def __init__(self):
-        self.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/Tablero.jpg")
+        self.imagen = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
 
 
     def __new__(cls, *args, **kwargs):
@@ -26,13 +26,13 @@ class Tablero(object):
         lista_a_imprimir = pieza.posibles_movimientos()
         list_aux = []
         for mov in lista_a_imprimir:
-            print(10)
+
             for item in self.lista_Bloques:
-                print(11)
+
                 if item.poscy == mov[1] and item.poscx == mov[0]:
                     list_aux.append(item)
         for item in list_aux:
-            print(12)
+
             ventana.blit(a,(item.traduccionx, item.traducciony))
         return lista_a_imprimir
 
@@ -271,9 +271,9 @@ class Tablero(object):
 
         ventana.blit(self.imagen, (0,0))
         for item in self.lista_Piezas:
-            print(13)
+
             for item_bloques in self.lista_Bloques:
-                print(14)
+
                 if item.viva and item.posx == item_bloques.poscx and item.posy == item_bloques.poscy:
                     ventana.blit(item.imagen,(item_bloques.traduccionx + 20,item_bloques.traducciony + 5))
                     pygame.display.update()
@@ -289,12 +289,12 @@ class Tablero(object):
         for item in range(8):
             x = 0
             xprima +=1
-            print("entre2")
+
             traducx = 24
             for item in range(8):
                 x += 1
 
-                print("entre")
+
 
 
                 a = Bloque()
@@ -310,7 +310,7 @@ class Tablero(object):
                 a.traducciony = traducy
                 Tablero().lista_Bloques.append(a)
                 traducx += 81
-                print(a)
+
 
             y += 1
             traducy -= 82
@@ -321,7 +321,6 @@ class Tablero(object):
         cx,cy=0,0
 
         while True:
-            print("la re puta madre era el puto while ture")
 
             mouse = pygame.mouse.get_pos()
 
@@ -344,7 +343,28 @@ class Tablero(object):
                                     cx=item_bloques.poscx
 
                                     if cx == item[0]  and cy == item[1]:
-                                        pieza.mover(cx,cy)
+                                        if pieza.color == "Blanco":
+                                            if pieza._id == 1 and pieza.var_inicial and cx == 2:
+
+                                                for item in Tablero().lista_Piezas:
+                                                    if item._id==56:
+
+                                                        item.mover(3,item.posy)
+                                            if pieza._id == 1 and pieza.var_inicial and cx == 6:
+                                                for item in Tablero().lista_Piezas:
+                                                    if item._id==57:
+                                                        item.mover(5, item.posy)
+                                        if pieza.color == "Negro":
+                                            if pieza._id == 0 and pieza.var_inicial and cx == 3:
+
+                                                for item in Tablero().lista_Piezas:
+                                                    if item._id == 58:
+                                                        item.mover(4, item.posy)
+                                            if pieza._id == 0 and pieza.var_inicial and cx == 7:
+                                                for item in Tablero().lista_Piezas:
+                                                    if item._id == 59:
+                                                        item.mover(6, item.posy)
+                                        pieza.mover(cx, cy)
                                         return
                     if keys[K_1]:
                         return
