@@ -28,11 +28,11 @@ class GM(object):
         return a
 
     def recrear_partida(self,partida):
-        Tablero().crear_pieza
+        Tablero().crearpiezas()
         for item in partida.lista_mov:
-            for item2 in Tablero().listapieza:
+            for item2 in Tablero().lista_Piezas:
                 if item["Pieza"] ==  item2._id:
-                    for item3 in Tablero().lista_bloques:
+                    for item3 in Tablero().lista_Bloques:
                         if item3.Nombre == item["Posicion"]:
                             item2.mover(item3.poscx,item3.poscy)
                             item2.comer()

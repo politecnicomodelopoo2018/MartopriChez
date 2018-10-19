@@ -3,15 +3,15 @@ from pygame.locals import *
 from ClasesPiezas import *
 import time
 
-# a = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
-# ventana = pygame.display.set_mode((700,700))
+a = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/Bola_naranja.png")
+ventana = pygame.display.set_mode((700,700))
 
 class Tablero(object):
 
     instance = None
 
     def __init__(self):
-        self.imagen = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
+        self.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/Tablerooooooo.png")
 
 
     def __new__(cls, *args, **kwargs):
