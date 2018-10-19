@@ -1,9 +1,10 @@
-from Menu import*
+from Menu import *
 import pygame
 
 from creador import *
 from pruba import Juego
-from ClasesTablero import Tablero
+
+
 
 pygame.init()
 
@@ -21,10 +22,11 @@ while not salir:
                 jugador_Negro = menus()
                 _id_jugador_Negro = menus()
                 #crearPartida
-
+                Juego()
             if event.key == pygame.K_2:
                 nombrePersonaje = menus()
                 eloPersonaje = menus()
+                Juego()
                 #crearPersonaje
             if event.key == pygame.K_3:
                 partida = menus()
@@ -33,9 +35,7 @@ while not salir:
                 pygame.quit()
                 sys.exit()
 
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
+
 
     screen.fill((0, 0, 0))
     pygame.display.flip()

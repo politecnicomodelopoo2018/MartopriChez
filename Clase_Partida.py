@@ -52,4 +52,4 @@ class jugador(object):
 
         self._id = id
         self.Nombre=Nombre
-        self.elo=elo
+        self.elo= 1000
