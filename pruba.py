@@ -12,14 +12,14 @@ def Juego():
         crearpiezas()
 
 
-ventana = pygame.display.set_mode((700,700))
-red = (255, 0, 0)
-blue = (0, 255, 0)
+        ventana = pygame.display.set_mode((700,700))
+        red = (255, 0, 0)
+        blue = (0, 255, 0)
 
-Board = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
-posX, posY = 0, 0
-pygame.display.set_caption("Martorille chess")
-ventana.blit(Board, (posX, posY))
+        Board = pygame.image.load("/home/melman/Escritorio/Tablero.jpg")
+        posX, posY = 0, 0
+        pygame.display.set_caption("Martorille chess")
+        ventana.blit(Board, (posX, posY))
 
         Tablero().crear_Bloques()
 
