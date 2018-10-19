@@ -76,27 +76,29 @@ class rey(pieza):
     def jaque(self):
 
         list_aux = []
-        list_aux2 = []
 
         for item in Tablero().lista_Piezas:
 
             if not item.color == self.color:
-                list_aux += item.posibles_movimientos(False)
-
-        for item in list_aux:
-            if item[0] == self.posx and item[1] == self.posy:
-                list_aux2.append(item)
-        return list_aux2
+                if item._id== 2:
+                    list_aux += item.mov_esp()
+                else:
+                    list_aux += item.posibles_movimientos(0)
 
 
-    def posibles_movimientos(self, chequearJaque=True):
+        return list_aux
+
+
+    def posibles_movimientos(self, chequearJaque=1):
+
 
         lista_total_de_lugares=self.diferenciar()
         lista_total = self.movimientos_invalidos()
-        if chequearJaque:
+        lista_donde_atacan = []
+        if chequearJaque == 1:
             lista_donde_atacan = self.jaque()
 
-
+        print(lista_donde_atacan)
         posibles_mov = []
 
         VariableParaImprimiry=self.posy + 1
@@ -417,7 +419,7 @@ class torre(pieza):
 
         return lista_de_rayosx
 
-    def posibles_movimientos(self):
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_de_mov_posibles = []
@@ -560,7 +562,7 @@ class alfil(pieza):
 
         return lista_de_rayosx
 
-    def posibles_movimientos(self):
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_de_mov_posibles = []
@@ -732,7 +734,7 @@ class reina(pieza):
 
         return lista_de_rayosx
 
-    def posibles_movimientos(self):
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_totalx =[]
@@ -894,7 +896,40 @@ class reina(pieza):
 
 class peon(pieza):
 
-    def posibles_movimientos(self):
+    def mov_esp(self):
+        if self.color == "Blanco":
+            VariableParaImprimiry = self.posy + 1
+            VariableParaImprimirx = self.posx + 1
+            list_aux = []
+            list_aux.append(VariableParaImprimirx)
+            list_aux.append(VariableParaImprimiry)
+            list_aux2 = []
+            list_aux2.append(list_aux)
+            list_aux = []
+            VariableParaImprimiry = self.posy + 1
+            VariableParaImprimirx = self.posx - 1
+            list_aux.append(VariableParaImprimirx)
+            list_aux.append(VariableParaImprimiry)
+            list_aux2.append(list_aux)
+            return list_aux2
+
+        if self.color == "Negro":
+            VariableParaImprimiry = self.posy - 1
+            VariableParaImprimirx = self.posx + 1
+            list_aux = []
+            list_aux.append(VariableParaImprimirx)
+            list_aux.append(VariableParaImprimiry)
+            list_aux2 = []
+            list_aux2.append(list_aux)
+            list_aux = []
+            VariableParaImprimiry = self.posy - 1
+            VariableParaImprimirx = self.posx - 1
+            list_aux.append(VariableParaImprimirx)
+            list_aux.append(VariableParaImprimiry)
+            list_aux2.append(list_aux)
+            return list_aux2
+
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_de_mov_posibles = []
