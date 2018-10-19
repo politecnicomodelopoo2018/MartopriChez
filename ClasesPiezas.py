@@ -46,235 +46,6 @@ class pieza(object):
                 listita.append(listaaux)
         return listita
 
-    def crearpiezas(self):
-        x = 0
-        y = 2
-        cont = 10
-        for item in range(8):
-            a = peon()
-            a._id = cont
-            x += 1
-            a.color = "Blanco"
-            a.posx = x
-            a.posy = y
-            a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/peon_Blanco.png")
-            a.viva = True
-            a.var_inicial = True
-            Tablero().lista_Piezas.append(a)
-            cont += 1
-        x = 0
-        y = 7
-        cont = 2
-        for item in range(8):
-            a = peon()
-            a_id = cont
-            x += 1
-            a.color = "Negro"
-            a.posx = x
-            a.posy = y
-            a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/peon_Negro.png")
-            a.viva = True
-            a.var_inicial = True
-            Tablero().lista_Piezas.append(a)
-            cont += 1
-
-        y = 1
-        x = 4
-
-        a = rey()
-        a.color = "Blanco"
-        a._id = 1
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/rey_Blanco.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-        y = 8
-        x = 5
-
-        a = rey()
-        a._id = 0
-        a.color = "Negro"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/rey_Negro.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 1
-        x = 5
-
-        a = reina()
-        a.color = "Blanco"
-        a._id = 20
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/reina_Blanco.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-        y = 8
-        x = 4
-
-        a = reina()
-        a.color = "Negro"
-        a._id = 21
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/reina_Negro.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 1
-        x = 2
-
-        a = caballo()
-        a._id = 40
-        a.color = "Blanco"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/caballo_Blanco.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 1
-        x = 7
-
-        a = caballo()
-        a._id = 41
-        a.color = "Blanco"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/caballo_Blanco.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 8
-        x = 2
-        a = caballo()
-        a._id = 42
-        a.color = "Negro"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/caballo_Negro.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 8
-        x = 7
-        a = caballo()
-        a._id = 42
-        a.color = "Negro"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/caballo_Negro.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 8
-        x = 3
-
-        a = alfil()
-        a._id = 50
-        a.color = "Negro"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/alfil_Negro.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 8
-        x = 6
-
-        a = alfil()
-        a._id = 54
-        a.color = "Negro"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/alfil_Negro.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 1
-        x = 6
-        a = alfil()
-        a._id = 55
-        a.color = "Blanco"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/alfil_Blanco.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 1
-        x = 3
-        a = alfil()
-        a._id = 57
-        a.color = "Blanco"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/alfil_Blanco.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 1
-        x = 1
-        a = torre()
-        a._id = 56
-        a.color = "Blanco"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/torre_Blanco.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 1
-        x = 8
-        a = torre()
-        a._id = 57
-        a.color = "Blanco"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/torre_Blanco.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 8
-        x = 1
-        a = torre()
-        a._id = 58
-        a.color = "Negro"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/torre_Negro.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
-
-        y = 8
-        x = 8
-        a = torre()
-        a._id = 59
-        a.color = "Negro"
-        a.posx = x
-        a.posy = y
-        a.imagen = pygame.image.load("/home/aprisinsetti/Escritorio/Gmail/torre_Negro.png")
-        a.viva = True
-        a.var_inicial = True
-        Tablero().lista_Piezas.append(a)
 
     def rayosX(self):
         vacia = []
@@ -302,13 +73,32 @@ class pieza(object):
 
 class rey(pieza):
 
+    def jaque(self):
 
-    def posibles_movimientos(self):
+        list_aux = []
+
+        for item in Tablero().lista_Piezas:
+
+            if not item.color == self.color:
+                if item._id== 2:
+                    list_aux += item.mov_esp()
+                else:
+                    list_aux += item.posibles_movimientos(0)
+
+
+        return list_aux
+
+
+    def posibles_movimientos(self, chequearJaque=1):
+
 
         lista_total_de_lugares=self.diferenciar()
         lista_total = self.movimientos_invalidos()
+        lista_donde_atacan = []
+        if chequearJaque == 1:
+            lista_donde_atacan = self.jaque()
 
-
+        print(lista_donde_atacan)
         posibles_mov = []
 
         VariableParaImprimiry=self.posy + 1
@@ -317,6 +107,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx,VariableParaImprimiry] in lista_donde_atacan:
                             lista_aux = []
                             lista_aux.append(VariableParaImprimirx)
                             lista_aux.append(VariableParaImprimiry)
@@ -328,6 +119,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -339,6 +131,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -350,6 +143,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -360,6 +154,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -370,6 +165,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -381,6 +177,7 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
@@ -391,16 +188,17 @@ class rey(pieza):
         if not (VariableParaImprimirx < 0 or 8 < VariableParaImprimirx or 8 < VariableParaImprimiry or 0 > VariableParaImprimiry):
             if not [VariableParaImprimirx,VariableParaImprimiry] in lista_total:
                 if not [VariableParaImprimirx, VariableParaImprimiry] in lista_total_de_lugares:
+                    if not [VariableParaImprimirx, VariableParaImprimiry] in lista_donde_atacan:
                         lista_aux = []
                         lista_aux.append(VariableParaImprimirx)
                         lista_aux.append(VariableParaImprimiry)
                         posibles_mov.append(lista_aux)
 
-        posibles_mov += self.enroque()
+        posibles_mov += self.enroque(lista_donde_atacan)
 
         return posibles_mov
 
-    def enroque(self):
+    def enroque(self,lista_donde_atacan):
         lista_total_de_lugares = self.diferenciar()
         if self.color == "Blanco":
             lista = []
@@ -421,12 +219,14 @@ class rey(pieza):
                 x = self.posx-2
                 y = self.posy
                 if not [x, y] in lista_total_de_lugares:
-                    lista += [[x,y]]
+                   if not [x,y] in lista_donde_atacan:
+                        lista += [[x,y]]
             if self.var_inicial == True and torre2.var_inicial == True:
                 x = self.posx+2
                 y = self.posy
                 if not [x, y] in lista_total_de_lugares:
-                    lista += [[x,y]]
+                    if not [x, y] in lista_donde_atacan:
+                        lista += [[x,y]]
             return lista
         else:
             lista = []
@@ -452,7 +252,7 @@ class rey(pieza):
 
 class caballo(pieza):
 
-    def posibles_movimientos(self):
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_totalx = []
@@ -619,7 +419,7 @@ class torre(pieza):
 
         return lista_de_rayosx
 
-    def posibles_movimientos(self):
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_de_mov_posibles = []
@@ -762,7 +562,7 @@ class alfil(pieza):
 
         return lista_de_rayosx
 
-    def posibles_movimientos(self):
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_de_mov_posibles = []
@@ -934,7 +734,7 @@ class reina(pieza):
 
         return lista_de_rayosx
 
-    def posibles_movimientos(self):
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_totalx =[]
@@ -1096,7 +896,40 @@ class reina(pieza):
 
 class peon(pieza):
 
-    def posibles_movimientos(self):
+    def mov_esp(self):
+        if self.color == "Blanco":
+            VariableParaImprimiry = self.posy + 1
+            VariableParaImprimirx = self.posx + 1
+            list_aux = []
+            list_aux.append(VariableParaImprimirx)
+            list_aux.append(VariableParaImprimiry)
+            list_aux2 = []
+            list_aux2.append(list_aux)
+            list_aux = []
+            VariableParaImprimiry = self.posy + 1
+            VariableParaImprimirx = self.posx - 1
+            list_aux.append(VariableParaImprimirx)
+            list_aux.append(VariableParaImprimiry)
+            list_aux2.append(list_aux)
+            return list_aux2
+
+        if self.color == "Negro":
+            VariableParaImprimiry = self.posy - 1
+            VariableParaImprimirx = self.posx + 1
+            list_aux = []
+            list_aux.append(VariableParaImprimirx)
+            list_aux.append(VariableParaImprimiry)
+            list_aux2 = []
+            list_aux2.append(list_aux)
+            list_aux = []
+            VariableParaImprimiry = self.posy - 1
+            VariableParaImprimirx = self.posx - 1
+            list_aux.append(VariableParaImprimirx)
+            list_aux.append(VariableParaImprimiry)
+            list_aux2.append(list_aux)
+            return list_aux2
+
+    def posibles_movimientos(self,a):
         reyx = 0
         reyy = 0
         lista_de_mov_posibles = []
