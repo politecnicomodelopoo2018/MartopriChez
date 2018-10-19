@@ -1,6 +1,6 @@
 import pygame, sys
 from pygame.locals import *
-from ClasesTablero import *
+from ClasesTablero import Tablero
 
 
 class pieza(object):
@@ -22,8 +22,7 @@ class pieza(object):
 
     def comer(self):
         for pieza in Tablero().lista_Piezas:
-            for bloque in Tablero().lista_Bloques:
-                if self.posx == pieza.posx and self.posy == pieza.posy and pieza._id != self._id and pieza.color != self.color:
+                if self.posx == pieza.posx and self.posy == pieza.posy  and pieza.color != self.color:
                     pieza.viva = False
 
     def diferenciar(self):
@@ -199,8 +198,9 @@ class rey(pieza):
         return posibles_mov
 
     def enroque(self,lista_donde_atacan):
-        lista_total_de_lugares = self.diferenciar()
         if self.color == "Blanco":
+            lista_total_de_lugares = self.diferenciar()
+            lista_de_otro_color = self.diferenciarColor()
             lista = []
             torre1=None
             torre2=None
@@ -220,15 +220,19 @@ class rey(pieza):
                 y = self.posy
                 if not [x, y] in lista_total_de_lugares:
                    if not [x,y] in lista_donde_atacan:
-                        lista += [[x,y]]
+                       if not [x,y] in lista_de_otro_color:
+                            lista += [[x,y]]
             if self.var_inicial == True and torre2.var_inicial == True:
                 x = self.posx+2
                 y = self.posy
                 if not [x, y] in lista_total_de_lugares:
                     if not [x, y] in lista_donde_atacan:
-                        lista += [[x,y]]
+                        if not [x, y] in lista_de_otro_color:
+                            lista += [[x, y]]
             return lista
         else:
+            lista_total_de_lugares = self.diferenciar()
+            lista_de_otro_color = self.diferenciarColor()
             lista = []
             torre1 = None
             torre2 = None
@@ -241,12 +245,14 @@ class rey(pieza):
                 x = self.posx - 2
                 y = self.posy
                 if not [x, y] in lista_total_de_lugares:
-                    lista += [[x, y]]
+                    if not [x,y] in lista_de_otro_color:
+                        lista += [[x,y]]
             if self.var_inicial == True and torre2.var_inicial == True:
                 x = self.posx + 2
                 y = self.posy
                 if not [x, y] in lista_total_de_lugares:
-                    lista += [[x, y]]
+                    if not [x,y] in lista_de_otro_color:
+                        lista += [[x, y]]
             return lista
 
 
@@ -1009,6 +1015,8 @@ class peon(pieza):
                                 list_aux.append(VariableParaImprimirx)
                                 list_aux.append(VariableParaImprimiry)
                                 lista_de_mov_posibles.append(list_aux)
+                                list_aux = []
+
 
                 for comer in Tablero().lista_Piezas:
                     if comer.posx == self.posx - 1 and comer.posy == self.posy - 1 and comer.color != self.color:
@@ -1016,6 +1024,8 @@ class peon(pieza):
                             list_aux.append(self.posy-1)
                             lista_de_mov_posibles.append(list_aux)
                             list_aux = []
+
+
 
                     if comer.posx == self.posx + 1 and comer.posy == self.posy - 1 and comer.color != self.color:
                             list_aux.append(self.posx+1)

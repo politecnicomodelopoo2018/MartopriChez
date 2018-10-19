@@ -2,8 +2,11 @@ from Menu import*
 import pygame
 from pygame.locals import *
 from creador import *
-from pruba import  Juego
+from pruba import Juego
+from ClasesTablero import Tablero
+
 pygame.init()
+
 clock = pg.time.Clock()
 salir = False
 screen = pygame.display.set_mode((1280, 700))
