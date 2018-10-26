@@ -146,6 +146,8 @@ class Tablero(object):
 
 
 
+
+
 class Bloque(object):
 
     Nombre = None
@@ -161,4 +163,6 @@ class Bloque(object):
             if item.posx == self.poscx and item.posy == self.poscy:
                 self.Vacio = False
                 return
+
+
 

@@ -36,7 +36,6 @@ while not salir:
                 sys.exit()
 
 
-
     screen.fill((0, 0, 0))
     pygame.display.flip()
     clock.tick(30)

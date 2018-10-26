@@ -7,8 +7,6 @@ class BD(object):
     __user = None
     __password = None
     __db = None
-    __autocommit = None
-    __charset = None
 
     def __new__(cls, *args, **kwargs):
 
@@ -18,22 +16,19 @@ class BD(object):
 
         return BD.__instance
 
-    def setConnection(self,host,user,password,db,autocommit, charset):
+    def setConnection(self,host,user,password,db):
 
         self.__host = host
         self.__user = user
         self.__password = password
         self.__db = db
-        self.__autocommit = autocommit
-        self.__charset = charset
 
     def run(self, query):
             bd = pymysql.connect(host=self.__host,
                                  user=self.__user,
                                  passwd=self.__password,
                                  db=self.__db,
-                                 autocommit=self.__autocommit,
-                                 charset=self.__charset)
+                                 autocommit=True)
 
             cursor = bd.cursor(pymysql.cursors.DictCursor)
 

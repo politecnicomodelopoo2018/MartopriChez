@@ -5,12 +5,13 @@ from pygame.locals import *
 pygame.init()
 class menus(object):
 
-    def __init__(self):
+    @staticmethod
+    def tomarStrings():
 
         screen = pygame.display.set_mode((1280, 700))
 
         active = False
-        self.text = ''
+        text = ''
         salir = False
         font = pg.font.Font(None, 32)
         clock = pg.time.Clock()
@@ -31,18 +32,21 @@ class menus(object):
                 if event.type == pg.KEYDOWN:
                     if active:
                         if event.key == pg.K_RETURN:
-                            print(self.text)
+                            print(text)
                             salir= True
                         elif event.key == pg.K_BACKSPACE:
-                            self.text = self.text[:-1]
+                            text = text[:-1]
                         else:
-                            self.text += event.unicode
+                            text += event.unicode
+
 
             screen.fill((252, 252, 252))
-            txt_surface = font.render(self.text, True, color)
+            txt_surface = font.render(text, True, color)
             width = max(200, txt_surface.get_width() + 10)
             input_box.w = width
             screen.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
             pg.draw.rect(screen, color, input_box, 2)
             pg.display.flip()
             clock.tick(30)
+
+        return text
