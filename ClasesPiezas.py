@@ -9,7 +9,7 @@ class pieza(object):
     posx = None
     posy = None
     imagen = None
-    viva = None
+    viva = True
     var_inicial = True
 
     def movimientos_invalidos(self):
@@ -209,9 +209,9 @@ class rey(pieza):
                     return
             for item in Tablero().lista_Piezas:
 
-                if item._id == 56:
+                if item._id == 28:
                     torre1 = item
-                if item._id == 57:
+                if item._id == 29:
                     torre2 = item
 
             if self.var_inicial == True and torre1.var_inicial == True:
@@ -236,9 +236,9 @@ class rey(pieza):
             torre1 = None
             torre2 = None
             for item in Tablero().lista_Piezas:
-                if item._id == 58:
+                if item._id == 30:
                     torre1 = item
-                if item._id == 59:
+                if item._id == 31:
                     torre2 = item
             if self.var_inicial == True and torre1.var_inicial == True:
                 x = self.posx - 2
@@ -906,7 +906,7 @@ class peon(pieza):
             if self.posy == 8:
                 self.viva == False
                 a = reina()
-                a._id = 20
+                a._id = 18
                 a.color = self.color
                 a.posx = self.posx
                 a.posy = self.posy
@@ -917,7 +917,7 @@ class peon(pieza):
             if self.posy == 1:
                 self.viva == False
                 a = reina()
-                a._id = 20
+                a._id = 19
                 a.color = self.color
                 a.posx = self.posx
                 a.posy = self.posy

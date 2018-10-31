@@ -71,6 +71,7 @@ class GM(object):
                             time.sleep(3)
                             pygame.display.update()
 
+
     def descarga_datos(self,Blanco,Negro):
 
         jugadorb=BD().run("select * from Jugador where idJugador = "+ str(Blanco) +";")

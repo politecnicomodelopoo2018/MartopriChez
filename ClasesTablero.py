@@ -117,26 +117,26 @@ class Tablero(object):
                                             if pieza._id == 0 and pieza.var_inicial and cx == 2:
 
                                                 for item in Tablero().lista_Piezas:
-                                                    if item._id==56:
+                                                    if item._id==28:
 
                                                         item.mover(3,item.posy)
                                             if pieza._id == 0 and pieza.var_inicial and cx == 6:
                                                 for item in Tablero().lista_Piezas:
-                                                    if item._id==57:
+                                                    if item._id==29:
                                                         item.mover(5, item.posy)
                                             if pieza._id < 9 and pieza._id > 0 and cy == 8:
                                                 pieza.coronar()
                                         if pieza.color == "Negro":
-                                            if pieza._id == 0 and pieza.var_inicial and cx == 3:
+                                            if pieza._id == 1 and pieza.var_inicial and cx == 3:
 
                                                 for item in Tablero().lista_Piezas:
-                                                    if item._id == 58:
+                                                    if item._id == 30:
                                                         item.mover(4, item.posy)
-                                            if pieza._id == 0 and pieza.var_inicial and cx == 7:
+                                            if pieza._id == 1 and pieza.var_inicial and cx == 7:
                                                 for item in Tablero().lista_Piezas:
-                                                    if item._id == 59:
+                                                    if item._id == 31:
                                                         item.mover(6, item.posy)
-                                            if pieza._id < 9 and pieza._id > 0 and cy == 1:
+                                            if pieza._id < 18 and pieza._id > 9 and cy == 1:
                                                 pieza.coronar()
                                         pieza.mover(cx, cy)
                                         if turno == "Blanco":

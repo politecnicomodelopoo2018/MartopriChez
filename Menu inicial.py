@@ -8,7 +8,8 @@ from Mezcla import *
 
 
 data = BD()
-
+x = 856
+y = 500
 data.setConnection("127.0.0.1", "root", "alumno", "mydb")
 print(data.run("Select * from Jugador;"))
 
@@ -16,23 +17,23 @@ pygame.init()
 
 clock = pygame.time.Clock()
 salir = False
-screen = pygame.display.set_mode((1600, 800))
-board = pygame.image.load("/home/melman/Escritorio/Gmail/MENU.png")
-ventana.blit(board, (0, 0))
+screen = pygame.display.set_mode((x, y))
+board = pygame.image.load("/home/melman/Escritorio/Gmail/menu.png")
+
 
 while not salir:
+
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
-                x=1920
-                y=1080
+
                 d ="/home/melman/Escritorio/Gmail/nuevapartidanombre.png"
                 nombre = menus.tomarStrings(d,x,y)
                 d ="/home/melman/Escritorio/Gmail/nomjugblanco.png"
                 jugador_Blanco = menus.tomarStrings(d,x,y)
                 d ="/home/melman/Escritorio/Gmail/idjugadorblanco.png"
                 _id_jugador_Blanco = menus.tomarStrings(d,x,y)
-                d ="/home/melman/Escritorio/Gmail/nombre jugador negro.png"
+                d ="/home/melman/Escritorio/Gmail/nombre-jugador-negro.png"
                 jugador_Negro = menus.tomarStrings(d,x,y)
                 d ="/home/melman/Escritorio/Gmail/idjugadornegro.png"
                 _id_jugador_Negro = menus.tomarStrings(d,x,y)
@@ -42,8 +43,7 @@ while not salir:
                 Juego(a)
 
             if event.key == pygame.K_2:
-                x =1920
-                y =1080
+
                 f ="/home/melman/Escritorio/Gmail/NOMBREPJ.png"
                 nombrePersonaje = menus.tomarStrings(f,x,y)
                 f ="/home/melman/Escritorio/Gmail/ELOPG.png"
@@ -54,8 +54,6 @@ while not salir:
                 a.crear_jugador(nombrePersonaje,eloPersonaje)
 
             if event.key == pygame.K_3:
-                x=856
-                y=500
                 j ="/home/melman/Escritorio/Gmail/idpartidacargar.png"
                 partida = menus.tomarStrings(j,x,y)
                 partida = int(partida)
@@ -72,5 +70,6 @@ while not salir:
             sys.exit()
 
     screen.fill((0, 0, 0))
+    ventana.blit(board, (0, 0))
     pygame.display.flip()
     clock.tick(30)

@@ -77,8 +77,8 @@ class movimientos(object):
     color_pieza = None
 
     def crear_mov_interno(self,idp,idpi,idblo,cop):
-        self.id_partida = idp
-        self.id_pieza = idpi
+        self.id_partida = int(idp)
+        self.id_pieza = int(idpi)
         self.id_bloque = idblo
         self.color_pieza = cop
 

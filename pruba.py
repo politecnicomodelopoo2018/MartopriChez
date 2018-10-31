@@ -71,7 +71,7 @@ def Juego(partida):
 def crearpiezas():
     x = 0
     y = 2
-    cont = 1
+    cont = 2
     for item in range(8):
         a = peon()
         a._id = cont
@@ -87,7 +87,7 @@ def crearpiezas():
 
     x = 0
     y = 7
-    cont = 1
+    cont = 10
     for item in range(8):
         a = peon()
         a._id = cont
@@ -117,7 +117,7 @@ def crearpiezas():
     x = 5
 
     a = rey()
-    a._id = 0
+    a._id = 1
     a.color = "Negro"
     a.posx = x
     a.posy = y
@@ -131,7 +131,7 @@ def crearpiezas():
 
     a = reina()
     a.color = "Blanco"
-    a._id = 20
+    a._id = 18
     a.posx = x
     a.posy = y
     a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Blanco.png")
@@ -143,7 +143,7 @@ def crearpiezas():
 
     a = reina()
     a.color = "Negro"
-    a._id = 20
+    a._id = 19
     a.posx = x
     a.posy = y
     a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Negro.png")
@@ -155,7 +155,7 @@ def crearpiezas():
     x = 2
 
     a = caballo()
-    a._id = 40
+    a._id = 20
     a.color = "Blanco"
     a.posx = x
     a.posy = y
@@ -168,7 +168,7 @@ def crearpiezas():
     x = 7
 
     a = caballo()
-    a._id = 41
+    a._id = 21
     a.color = "Blanco"
     a.posx = x
     a.posy = y
@@ -180,7 +180,7 @@ def crearpiezas():
     y = 8
     x = 2
     a = caballo()
-    a._id = 42
+    a._id = 22
     a.color = "Negro"
     a.posx = x
     a.posy = y
@@ -192,7 +192,7 @@ def crearpiezas():
     y = 8
     x = 7
     a = caballo()
-    a._id = 42
+    a._id = 23
     a.color = "Negro"
     a.posx = x
     a.posy = y
@@ -205,7 +205,7 @@ def crearpiezas():
     x = 3
 
     a = alfil()
-    a._id = 50
+    a._id = 24
     a.color = "Negro"
     a.posx = x
     a.posy = y
@@ -218,7 +218,7 @@ def crearpiezas():
     x = 6
 
     a = alfil()
-    a._id = 54
+    a._id = 25
     a.color = "Negro"
     a.posx = x
     a.posy = y
@@ -230,7 +230,7 @@ def crearpiezas():
     y = 1
     x = 6
     a = alfil()
-    a._id = 55
+    a._id = 26
     a.color = "Blanco"
     a.posx = x
     a.posy = y
@@ -242,7 +242,7 @@ def crearpiezas():
     y = 1
     x = 3
     a = alfil()
-    a._id = 57
+    a._id = 27
     a.color = "Blanco"
     a.posx = x
     a.posy = y
@@ -254,7 +254,7 @@ def crearpiezas():
     y = 1
     x = 1
     a = torre()
-    a._id = 56
+    a._id = 28
     a.color = "Blanco"
     a.posx = x
     a.posy = y
@@ -266,7 +266,7 @@ def crearpiezas():
     y = 1
     x = 8
     a = torre()
-    a._id = 57
+    a._id = 29
     a.color = "Blanco"
     a.posx = x
     a.posy = y
@@ -278,7 +278,7 @@ def crearpiezas():
     y = 8
     x = 1
     a = torre()
-    a._id = 58
+    a._id = 30
     a.color = "Negro"
     a.posx = x
     a.posy = y
@@ -290,7 +290,7 @@ def crearpiezas():
     y = 8
     x = 8
     a = torre()
-    a._id = 59
+    a._id = 31
     a.color = "Negro"
     a.posx = x
     a.posy = y
