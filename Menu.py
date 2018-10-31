@@ -6,10 +6,12 @@ pygame.init()
 class menus(object):
 
     @staticmethod
-    def tomarStrings():
+    def tomarStrings(direccion, x, y):
 
-        screen = pygame.display.set_mode((1280, 700))
-
+        screen = pygame.display.set_mode((x, y))
+        pantalla= pygame.image.load(direccion)
+        screen.blit(pantalla, (0, 0))
+        pygame.display.update()
         active = False
         text = ''
         salir = False
@@ -32,7 +34,6 @@ class menus(object):
                 if event.type == pg.KEYDOWN:
                     if active:
                         if event.key == pg.K_RETURN:
-                            print(text)
                             salir= True
                         elif event.key == pg.K_BACKSPACE:
                             text = text[:-1]
@@ -48,5 +49,6 @@ class menus(object):
             pg.draw.rect(screen, color, input_box, 2)
             pg.display.flip()
             clock.tick(30)
+
 
         return text

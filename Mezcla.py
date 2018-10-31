@@ -3,6 +3,7 @@ import time
 from ClasesTablero import *
 from bdd import *
 from Clase_Partida import *
+from pruba import *
 
 class GM(object):
 
@@ -15,17 +16,28 @@ class GM(object):
             GM.instance.lista_Jugadores = []
             GM.instance.lista_Partidas = []
 
-        return Tablero.instance
+        return GM.instance
 
     def descargar_partidas(self,id_partida):
 
-        obj_partida = BD().run("select * from Partida where idPartida = " + str(id_partida))
-        dic_mov = BD().run("select * from Posiciones where idPartida = " + str(id_partida))
+        obj_partida = BD().run("select * from Partidas where idPartida = " + str(id_partida)+";")
+        dic_mov = BD().run("select * from Posiciones where Partidas_idPartida = " + str(id_partida)+";")
+        dic_mov = dic_mov.fetchall()
+        movs = []
+        for item in dic_mov:
+            a = movimientos()
+            a.crear_mov_interno(item["Partidas_idPartida"],item["Pieza"],item["Posicion"],item["Color"])
+
+            movs.append(a)
         a=Partida()
-        a.jugador_Blanco = obj_partida["Jugador_idJugador"]
-        a.jugador_Negro = obj_partida["Jugador_idJugador1"]
-        a._id = obj_partida["idPartida"]
-        a.lista_mov=dic_mov
+        algo = obj_partida.fetchall()
+
+        nm = algo[0]["Nombre"]
+        jB = algo[0]["Jugador_idJugador"]
+        jn = algo[0]["Jugador_idJugador1"]
+        a.lista_mov=movs
+        jbn,jnn = self.descarga_datos(jB,jn)
+        a.crear_partida(nm,jbn.Nombre,jbn._id,jnn.Nombre,jnn._id )
         return a
 
     def recrear_partida(self,partida):
@@ -50,25 +62,26 @@ class GM(object):
 
         for item in partida.lista_mov:
             for item2 in Tablero().lista_Piezas:
-                if item["Pieza"] ==  item2._id:
+                if item.id_pieza ==  item2._id:
                     for item3 in Tablero().lista_Bloques:
-                        if item3.Nombre == item["Posicion"]:
+                        if item3.Nombre == item.id_bloque:
                             item2.mover(item3.poscx,item3.poscy)
                             item2.comer()
                             Tablero().imprimir()
                             time.sleep(3)
                             pygame.display.update()
 
-    def descarga_datos(self):
+    def descarga_datos(self,Blanco,Negro):
 
-        jugador=BD().run("select * from Jugador")
-        for item in jugador:
-            a = jugador()
-            a.crear_jugador(item["idJugador"],item["Nombre"],item["elo"])
+        jugadorb=BD().run("select * from Jugador where idJugador = "+ str(Blanco) +";")
+        jugadorn = BD().run("select * from Jugador where idJugador = " + str(Negro) + ";")
+        jugadorb=jugadorb.fetchall()
+        jugadorn=jugadorn.fetchall()
+        a = jugador()
+        a.crear_jugador(jugadorb[0]["Nombre"],jugadorb[0]["elo"])
+        b = jugador()
+        b.crear_jugador(jugadorn[0]["Nombre"], jugadorn[0]["elo"])
+        return a,b
 
-        partidas=BD().run("select * from Partida")
-        for item in partidas:
-            xD = BD().run("select Nombre from Jugador where idJugador =" + item["Jugador_idJugador"])
-            xD1 = BD().run("select Nombre from Jugador where idJugador =" + item["Jugador_idJugador"])
-            b = Partida()
-            b.crear_partida(item["idPartida"],item["Nombre"],xD,item["Jugador_idJugador"],xD1,item["Jugador_idJugador"])
+
+

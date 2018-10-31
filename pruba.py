@@ -3,13 +3,13 @@ import pygame, sys
 from pygame.locals import *
 from ClasesPiezas import *
 from ClasesTablero import *
-from creador import *
+
 
 
 
 pygame.init()
 def Juego(partida):
-
+        turno = "Blanco"
         crearpiezas()
 
 
@@ -31,8 +31,6 @@ def Juego(partida):
 
         while True:
 
-
-
             for evento in pygame.event.get():
                 mouse = pygame.mouse.get_pos()
 
@@ -46,10 +44,10 @@ def Juego(partida):
 
                             for pieza in Tablero().lista_Piezas:
 
-                                if pieza.posx == item.poscx and pieza.posy == item.poscy and pieza.viva == True:
+                                if pieza.posx == item.poscx and pieza.posy == item.poscy and pieza.viva == True and pieza.color == turno:
                                     lista_de_posibles_mov = Tablero().posibles_mov(pieza)
                                     pygame.display.update()
-                                    Tablero().no_me_rompas_las_bolas_maxi(lista_de_posibles_mov, pieza)
+                                    turno=Tablero().no_me_rompas_las_bolas_maxi(lista_de_posibles_mov, pieza,turno)
                                     partida.guardar_mov(pieza)
                                     pieza.comer()
                                     Tablero().imprimir()
@@ -73,7 +71,7 @@ def Juego(partida):
 def crearpiezas():
     x = 0
     y = 2
-    cont = 2
+    cont = 1
     for item in range(8):
         a = peon()
         a._id = cont
@@ -85,10 +83,11 @@ def crearpiezas():
         a.viva = True
         a.var_inicial = True
         Tablero().lista_Piezas.append(a)
+        cont = cont + 1
 
     x = 0
     y = 7
-    cont = 2
+    cont = 1
     for item in range(8):
         a = peon()
         a._id = cont
@@ -100,13 +99,14 @@ def crearpiezas():
         a.viva = True
         a.var_inicial = True
         Tablero().lista_Piezas.append(a)
+        cont = cont + 1
 
     y = 1
     x = 4
 
     a = rey()
     a.color = "Blanco"
-    a._id = 1
+    a._id = 0
     a.posx = x
     a.posy = y
     a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/rey_Blanco.png")
@@ -143,7 +143,7 @@ def crearpiezas():
 
     a = reina()
     a.color = "Negro"
-    a._id = 21
+    a._id = 20
     a.posx = x
     a.posy = y
     a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Negro.png")

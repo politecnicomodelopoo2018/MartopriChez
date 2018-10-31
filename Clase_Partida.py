@@ -33,13 +33,15 @@ class Partida(object):
             if item.poscx == pieza.posx and item.poscy == pieza.posy:
                 nombre=item.Nombre
 
-        BD().run("Insert INTO Posiciones values (Null ," + str(self._id) + "," + str(pieza._id) +",'"+ nombre +"','"+pieza.color +"')")
+        a = movimientos()
+        a.crear_mov(self._id,pieza._id,nombre,pieza.color)
 
     def crearEnBdd(self):
         BD().run("Insert INTO Partidas values (null ,'" + str(self.Nombre) + "'," + str(self._id_jugador_Blanco) + "," + str(self._id_jugador_Negro) + ")")
         h = BD().run("select idPartida from Partidas where Nombre = '"+ self.Nombre +"' and Jugador_idJugador = "+ str(self._id_jugador_Blanco) +" and Jugador_idJugador1 = "+ str(self._id_jugador_Negro))
         dasdasd=h.fetchall()
         self._id=dasdasd[0]["idPartida"]
+
 class jugador(object):
 
     _id=None
@@ -51,8 +53,42 @@ class jugador(object):
         self.Partidas_Jugadas= []
 
 
-    def crear_jugador(self,id,Nombre,elo):
+    def crear_jugador(self,Nombre,elo):
 
-        self._id = id
         self.Nombre=Nombre
-        self.elo= elo
+        if elo != 0:
+            self.elo= elo
+        else:
+            self.elo = 1000
+        self.crear_jugadorbdd()
+        id=BD().run("select idJugador from Jugador where Nombre = '"+ str(self.Nombre) +"' and elo ="+ str(self.elo) +";")
+        asd=id.fetchall()
+        self._id=asd[0]["idJugador"]
+
+    def crear_jugadorbdd(self):
+
+        BD().run("INSERT INTO Jugador Values (null,'"+str(self.Nombre) +"',"+ str(self.elo) +")")
+
+class movimientos(object):
+
+    id_partida = None
+    id_pieza = None
+    id_bloque = None
+    color_pieza = None
+
+    def crear_mov_interno(self,idp,idpi,idblo,cop):
+        self.id_partida = idp
+        self.id_pieza = idpi
+        self.id_bloque = idblo
+        self.color_pieza = cop
+
+    def crear_mov(self,idp,idpi,idblo,cop):
+        self.id_partida = idp
+        self.id_pieza = idpi
+        self.id_bloque = idblo
+        self.color_pieza = cop
+        self.guardar_mov()
+
+    def guardar_mov(self):
+
+        BD().run("Insert INTO Posiciones values (Null ," + str(self.id_partida) + "," + str(self.id_pieza) +",'"+ self.id_bloque +"','"+self.color_pieza +"')")

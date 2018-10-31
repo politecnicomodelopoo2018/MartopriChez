@@ -85,7 +85,7 @@ class Tablero(object):
             y += 1
             traducy -= 82
 
-    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza):#mover las piezas
+    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza,turno):#mover las piezas
 
         ym,xm=0,0
         cx,cy=0,0
@@ -114,16 +114,18 @@ class Tablero(object):
 
                                     if cx == item[0]  and cy == item[1]:
                                         if pieza.color == "Blanco":
-                                            if pieza._id == 1 and pieza.var_inicial and cx == 2:
+                                            if pieza._id == 0 and pieza.var_inicial and cx == 2:
 
                                                 for item in Tablero().lista_Piezas:
                                                     if item._id==56:
 
                                                         item.mover(3,item.posy)
-                                            if pieza._id == 1 and pieza.var_inicial and cx == 6:
+                                            if pieza._id == 0 and pieza.var_inicial and cx == 6:
                                                 for item in Tablero().lista_Piezas:
                                                     if item._id==57:
                                                         item.mover(5, item.posy)
+                                            if pieza._id < 9 and pieza._id > 0 and cy == 8:
+                                                pieza.coronar()
                                         if pieza.color == "Negro":
                                             if pieza._id == 0 and pieza.var_inicial and cx == 3:
 
@@ -134,10 +136,17 @@ class Tablero(object):
                                                 for item in Tablero().lista_Piezas:
                                                     if item._id == 59:
                                                         item.mover(6, item.posy)
+                                            if pieza._id < 9 and pieza._id > 0 and cy == 1:
+                                                pieza.coronar()
                                         pieza.mover(cx, cy)
-                                        return
+                                        if turno == "Blanco":
+                                            turno = "Negro"
+                                        else:
+                                            turno = "Blanco"
+                                        return turno
+
                     if keys[K_1]:
-                        return
+                        return turno
 
     def esta_Vaciox2(self):
         for item in self.lista_Bloques:

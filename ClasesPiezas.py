@@ -97,7 +97,6 @@ class rey(pieza):
         if chequearJaque == 1:
             lista_donde_atacan = self.jaque()
 
-        print(lista_donde_atacan)
         posibles_mov = []
 
         VariableParaImprimiry=self.posy + 1
@@ -901,6 +900,30 @@ class reina(pieza):
 
 
 class peon(pieza):
+
+    def coronar(self):
+        if self.color == "Blanco":
+            if self.posy == 8:
+                self.viva == False
+                a = reina()
+                a._id = 20
+                a.color = self.color
+                a.posx = self.posx
+                a.posy = self.posy
+                a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Blanco.png")
+                a.viva = True
+                Tablero().lista_Piezas.append(a)
+        else:
+            if self.posy == 1:
+                self.viva == False
+                a = reina()
+                a._id = 20
+                a.color = self.color
+                a.posx = self.posx
+                a.posy = self.posy
+                a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Negro.png")
+                a.viva = True
+                Tablero().lista_Piezas.append(a)
 
     def mov_esp(self):
         if self.color == "Blanco":
