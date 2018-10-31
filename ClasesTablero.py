@@ -85,7 +85,8 @@ class Tablero(object):
             y += 1
             traducy -= 82
 
-    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza,turno):#mover las piezas
+    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza,turno):#mover las piezas agregar insetr para los enrroques y corona(no funciona)
+
 
         ym,xm=0,0
         cx,cy=0,0
