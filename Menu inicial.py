@@ -18,7 +18,7 @@ pygame.init()
 clock = pygame.time.Clock()
 salir = False
 screen = pygame.display.set_mode((x, y))
-board = pygame.image.load("/home/melman/Escritorio/Gmail/menu.png")
+board = pygame.image.load("/home/melman/Escritorio/Gmail/Menu 1.png")
 
 
 while not salir:
@@ -27,15 +27,15 @@ while not salir:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
 
-                d ="/home/melman/Escritorio/Gmail/nuevapartidanombre.png"
+                d ="/home/melman/Escritorio/Gmail/NOMBRE PARTIDA.png"
                 nombre = menus.tomarStrings(d,x,y)
-                d ="/home/melman/Escritorio/Gmail/nomjugblanco.png"
+                d ="/home/melman/Escritorio/Gmail/nombre jugador BLANCO.png"
                 jugador_Blanco = menus.tomarStrings(d,x,y)
-                d ="/home/melman/Escritorio/Gmail/idjugadorblanco.png"
+                d ="/home/melman/Escritorio/Gmail/id jugador BLANCO.png"
                 _id_jugador_Blanco = menus.tomarStrings(d,x,y)
-                d ="/home/melman/Escritorio/Gmail/nombre-jugador-negro.png"
+                d ="/home/melman/Escritorio/Gmail/nombre jugador NEGRO.png"
                 jugador_Negro = menus.tomarStrings(d,x,y)
-                d ="/home/melman/Escritorio/Gmail/idjugadornegro.png"
+                d ="/home/melman/Escritorio/Gmail/id jugador NEGRO.png"
                 _id_jugador_Negro = menus.tomarStrings(d,x,y)
                 a = Partida()
                 a.crear_partida(nombre, jugador_Blanco, _id_jugador_Blanco, jugador_Negro, _id_jugador_Negro)
@@ -44,9 +44,9 @@ while not salir:
 
             if event.key == pygame.K_2:
 
-                f ="/home/melman/Escritorio/Gmail/NOMBREPJ.png"
+                f ="/home/melman/Escritorio/Gmail/nombre.png"
                 nombrePersonaje = menus.tomarStrings(f,x,y)
-                f ="/home/melman/Escritorio/Gmail/ELOPG.png"
+                f ="/home/melman/Escritorio/Gmail/elo.png"
                 eloPersonaje = menus.tomarStrings(f,x,y)
 
                 eloPersonaje=int(eloPersonaje)

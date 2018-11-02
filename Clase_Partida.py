@@ -5,6 +5,20 @@ from ClasesTablero import *
 from bdd import *
 import datetime
 
+class id_partida(object):
+
+    instance = None
+    id_global = None
+
+
+
+    def __new__(cls, *args, **kwargs):
+        if id_partida.instance is None:
+            id_partida.instance = object.__new__(cls)
+            id_partida.instance.lista_Piezas = []
+            id_partida.instance.lista_Bloques = []
+        return id_partida.instance
+
 class Partida(object):
 
     _id=None
@@ -37,10 +51,12 @@ class Partida(object):
         a.crear_mov(self._id,pieza._id,nombre,pieza.color)
 
     def crearEnBdd(self):
+
         BD().run("Insert INTO Partidas values (null ,'" + str(self.Nombre) + "'," + str(self._id_jugador_Blanco) + "," + str(self._id_jugador_Negro) + ")")
         h = BD().run("select idPartida from Partidas where Nombre = '"+ self.Nombre +"' and Jugador_idJugador = "+ str(self._id_jugador_Blanco) +" and Jugador_idJugador1 = "+ str(self._id_jugador_Negro))
         dasdasd=h.fetchall()
         self._id=dasdasd[0]["idPartida"]
+        id_partida().id_global = self._id
 
 class jugador(object):
 

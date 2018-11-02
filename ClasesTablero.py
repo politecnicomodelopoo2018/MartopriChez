@@ -1,6 +1,6 @@
 import pygame, sys
 from pygame.locals import *
-
+from bdd import *
 import time
 
 a = pygame.image.load("/home/melman/Escritorio/rsz_melma_puntito.png")
@@ -85,7 +85,7 @@ class Tablero(object):
             y += 1
             traducy -= 82
 
-    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza,turno):#mover las piezas agregar insetr para los enrroques y corona(no funciona)
+    def no_me_rompas_las_bolas_maxi(self, list_aux,pieza,turno,id_partida):#mover las piezas agregar insetr para los enrroques y corona(no funciona)
 
 
         ym,xm=0,0
@@ -119,26 +119,30 @@ class Tablero(object):
 
                                                 for item in Tablero().lista_Piezas:
                                                     if item._id==28:
-
+                                                        BD().run("insert into Posiciones values(null," + str(id_partida) + ",28,'C1','Blanco')")
                                                         item.mover(3,item.posy)
                                             if pieza._id == 0 and pieza.var_inicial and cx == 6:
                                                 for item in Tablero().lista_Piezas:
                                                     if item._id==29:
+                                                        BD().run("insert into Posiciones values(null," + str(id_partida) + ",29,'E1','Blanco')")
                                                         item.mover(5, item.posy)
-                                            if pieza._id < 9 and pieza._id > 0 and cy == 8:
-                                                pieza.coronar()
+                                            if pieza._id < 9 and pieza._id > 0 and cy == 8 and pieza.__class__.__name__ == "peon":
+                                                pieza.coronar(cx,cy)
                                         if pieza.color == "Negro":
                                             if pieza._id == 1 and pieza.var_inicial and cx == 3:
 
                                                 for item in Tablero().lista_Piezas:
                                                     if item._id == 30:
+                                                        BD().run("insert into Posiciones values(null," + str(id_partida) + ",30,'D8','Blanco')")
                                                         item.mover(4, item.posy)
                                             if pieza._id == 1 and pieza.var_inicial and cx == 7:
                                                 for item in Tablero().lista_Piezas:
                                                     if item._id == 31:
+                                                        BD().run("insert into Posiciones values(null," + str(id_partida) + ",31,'F8','Blanco')")
                                                         item.mover(6, item.posy)
-                                            if pieza._id < 18 and pieza._id > 9 and cy == 1:
-                                                pieza.coronar()
+                                            if pieza._id < 18 and pieza._id > 9 and cy == 1 and pieza.__class__.__name__ == "peon":
+
+                                                pieza.coronar(cx,cy)
                                         pieza.mover(cx, cy)
                                         if turno == "Blanco":
                                             turno = "Negro"

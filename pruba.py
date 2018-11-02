@@ -3,8 +3,17 @@ import pygame, sys
 from pygame.locals import *
 from ClasesPiezas import *
 from ClasesTablero import *
+from Clase_Partida import *
 
-
+def selec_reyes():
+    rey_blanco=None
+    rey_negro=None
+    for item in Tablero().lista_Piezas:
+        if item._id == 0 and item.color == "Blanco":
+            rey_blanco = item
+        if item._id == 1  and item.color == "Negro":
+            rey_negro = item
+    return rey_blanco,rey_negro
 
 
 pygame.init()
@@ -12,6 +21,7 @@ def Juego(partida):
         turno = "Blanco"
         crearpiezas()
 
+        reyB,reyN=selec_reyes()
 
         ventana = pygame.display.set_mode((700,700))
 
@@ -47,15 +57,17 @@ def Juego(partida):
                                 if pieza.posx == item.poscx and pieza.posy == item.poscy and pieza.viva == True and pieza.color == turno:
                                     lista_de_posibles_mov = Tablero().posibles_mov(pieza)
                                     pygame.display.update()
-                                    turno=Tablero().no_me_rompas_las_bolas_maxi(lista_de_posibles_mov, pieza,turno)
+                                    turno=Tablero().no_me_rompas_las_bolas_maxi(lista_de_posibles_mov, pieza,turno,id_partida().id_global)
                                     partida.guardar_mov(pieza)
                                     pieza.comer()
                                     Tablero().imprimir()
                                     Tablero().esta_Vaciox2()
-
-
-
-
+                                    if not reyB.viva:
+                                        pygame.quit()
+                                        sys.exit()
+                                    if not reyN.viva:
+                                        pygame.quit()
+                                        sys.exit()
 
                 if evento.type == QUIT:
                     pygame.quit()

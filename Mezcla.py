@@ -65,8 +65,11 @@ class GM(object):
                 if item.id_pieza ==  item2._id:
                     for item3 in Tablero().lista_Bloques:
                         if item3.Nombre == item.id_bloque:
+                            if item2.__class__.__name__ == "peon" and item2.posy == 2 or item2.posy == 7 :
+                                item2.coronar(item3.poscx,item3.poscy)
                             item2.mover(item3.poscx,item3.poscy)
                             item2.comer()
+
                             Tablero().imprimir()
                             time.sleep(3)
                             pygame.display.update()

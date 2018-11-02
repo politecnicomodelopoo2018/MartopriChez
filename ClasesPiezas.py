@@ -901,28 +901,29 @@ class reina(pieza):
 
 class peon(pieza):
 
-    def coronar(self):
+    def coronar(self,cx,cy):
         if self.color == "Blanco":
-            if self.posy == 8:
-                self.viva == False
+            if self.posy == 7:
                 a = reina()
-                a._id = 18
+                a._id = self._id
                 a.color = self.color
-                a.posx = self.posx
-                a.posy = self.posy
+                a.posx = cx
+                a.posy = cy
                 a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Blanco.png")
                 a.viva = True
+                Tablero().lista_Piezas.remove(self)
                 Tablero().lista_Piezas.append(a)
         else:
-            if self.posy == 1:
+            if self.posy == 2 :
                 self.viva == False
                 a = reina()
-                a._id = 19
+                a._id = self._id
                 a.color = self.color
-                a.posx = self.posx
-                a.posy = self.posy
+                a.posx = cx
+                a.posy = cy
                 a.imagen = pygame.image.load("/home/melman/Escritorio/piezas/reina_Negro.png")
                 a.viva = True
+                Tablero().lista_Piezas.remove(self)
                 Tablero().lista_Piezas.append(a)
 
     def mov_esp(self):
